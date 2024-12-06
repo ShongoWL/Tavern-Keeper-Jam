@@ -14,6 +14,11 @@ config/name="Tavern Keeper Jam"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://Scripts/Autoloads/signalBus.gd"
+GlobalVar="*res://Scripts/Autoloads/globalVar.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
