@@ -19,4 +19,4 @@ func takeDamage(attacker: HeroScene, damageTaken: int):
 	print("the monster's health is now ", hp)
 	if hp <= 0:
 		print ("Oh my god, ", attacker, " killed the monster :O")
-		
+		SignalBus.deathSignal.emit(self, attacker)

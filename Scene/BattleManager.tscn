@@ -1,10 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://omc7ani5wfa5"]
+[gd_scene load_steps=10 format=3 uid="uid://omc7ani5wfa5"]
 
 [ext_resource type="Script" path="res://Scripts/BattleManager.gd" id="1_ceb1t"]
 [ext_resource type="PackedScene" uid="uid://c55pg0nyqba0j" path="res://Scene/heroScene.tscn" id="1_vq15d"]
-[ext_resource type="Resource" uid="uid://tssetm4wqidn" path="res://Resources/baseHero.tres" id="3_d7e80"]
 [ext_resource type="PackedScene" uid="uid://c5nxxn8t3lgyf" path="res://Scene/time_manager.tscn" id="3_dsu4q"]
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="3_w2tkj"]
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
+
+[sub_resource type="Resource" id="Resource_edsy5"]
+resource_local_to_scene = true
+script = ExtResource("3_w2tkj")
+critChance = 0
+energyRegen = 5
+hp = 10
+damage = 3
+attackCooldown = 1.0
+preferredTarget = 4
+
+[sub_resource type="Resource" id="Resource_0rsbs"]
+resource_local_to_scene = true
+script = ExtResource("3_w2tkj")
+critChance = 0
+energyRegen = 5
+hp = 10
+damage = 3
+attackCooldown = 1.0
+preferredTarget = 4
+
+[sub_resource type="Resource" id="Resource_88sve"]
+resource_local_to_scene = true
+script = ExtResource("3_w2tkj")
+critChance = 0
+energyRegen = 5
+hp = 10
+damage = 3
+attackCooldown = 1.0
+preferredTarget = 4
+
+[sub_resource type="Resource" id="Resource_6tphc"]
+resource_local_to_scene = true
+script = ExtResource("3_w2tkj")
+critChance = 0
+energyRegen = 5
+hp = 10
+damage = 3
+attackCooldown = 1.0
+preferredTarget = 4
 
 [node name="BattleManager" type="Node2D" node_paths=PackedStringArray("heroArray", "enemyArray")]
 script = ExtResource("1_ceb1t")
@@ -12,7 +52,7 @@ heroArray = [NodePath("HeroScene"), NodePath("HeroScene2"), NodePath("HeroScene3
 enemyArray = [NodePath("Enemy"), NodePath("Enemy2"), NodePath("Enemy3"), NodePath("Enemy4")]
 
 [node name="HeroScene" parent="." instance=ExtResource("1_vq15d")]
-heroData = ExtResource("3_d7e80")
+heroData = SubResource("Resource_edsy5")
 
 [node name="TimeManager" parent="HeroScene" instance=ExtResource("3_dsu4q")]
 
@@ -25,16 +65,16 @@ hp = 10
 hp = 11
 
 [node name="HeroScene2" parent="." instance=ExtResource("1_vq15d")]
-heroData = ExtResource("3_d7e80")
+heroData = SubResource("Resource_0rsbs")
 
 [node name="TimeManager" parent="HeroScene2" instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene3" parent="." instance=ExtResource("1_vq15d")]
-heroData = ExtResource("3_d7e80")
+heroData = SubResource("Resource_88sve")
 
 [node name="TimeManager" parent="HeroScene3" instance=ExtResource("3_dsu4q")]
 
 [node name="Enemy4" parent="." instance=ExtResource("5_kdsbv")]
 
 [node name="HeroScene4" parent="." instance=ExtResource("1_vq15d")]
-heroData = ExtResource("3_d7e80")
+heroData = SubResource("Resource_6tphc")
