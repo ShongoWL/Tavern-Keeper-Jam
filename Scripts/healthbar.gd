@@ -1,6 +1,8 @@
 extends ProgressBar
+class_name Healthbar
 
-@onready var hero: HeroScene = $".."
+#When attaching this healthbar to a scene, you need to drag that scene's parent into this export box
+@export var parental: Node2D
 @onready var label: Label = $Label
 
 var tween: Tween
@@ -8,10 +10,10 @@ var tween: Tween
 var labelHp: int
 
 func initializeValues() -> void:
-	#Set max value of healthBar to hp, if we ever increase a character's max hp mid fight this will
-	#need to be set again or it won't display correctly
-	max_value = hero.heroData.hp #change to max hp
-	value = hero.hp
+	SignalBus.maxHpGained.connect(maxHpIncreased)
+	
+	max_value = parental.heroData.maxHp #change to max hp
+	value = max_value
 	labelHp = value
 	label.text = str(labelHp)+"/"+str(max_value)
 
@@ -29,5 +31,7 @@ func update(newValue: int):
 	tween = create_tween()
 	tween.tween_property(self, "value", newValue, 0.5)
 
-func maxHpIncreased():
-	pass #Write this later, after we've added a max HP variable
+func maxHpIncreased(who, amount: int):
+	if parental == who:
+		max_value += amount
+		value += amount
