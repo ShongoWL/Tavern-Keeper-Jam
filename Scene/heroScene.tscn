@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c55pg0nyqba0j"]
+[gd_scene load_steps=3 format=3 uid="uid://c55pg0nyqba0j"]
 
-[ext_resource type="Script" path="res://Scene/heroScene.gd" id="1_2kcso"]
+[ext_resource type="Script" path="res://Scripts/heroScene.gd" id="1_2kcso"]
+[ext_resource type="Resource" uid="uid://tssetm4wqidn" path="res://Resources/baseHero.tres" id="2_opam5"]
 
 [node name="HeroScene" type="Node2D"]
 script = ExtResource("1_2kcso")
+heroData = ExtResource("2_opam5")

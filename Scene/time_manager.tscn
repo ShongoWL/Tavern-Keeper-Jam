@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5nxxn8t3lgyf"]
+
+[ext_resource type="Script" path="res://Scripts/timeManager.gd" id="1_aennk"]
+
+[node name="TimeManager" type="Node"]
+script = ExtResource("1_aennk")
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="EnergyTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+
+[connection signal="timeout" from="AttackTimer" to="." method="sendAttackSignal"]
+[connection signal="timeout" from="EnergyTimer" to="." method="sendGainEnergySignal"]

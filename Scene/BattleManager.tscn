@@ -1,3 +1,80 @@
-[gd_scene format=3 uid="uid://omc7ani5wfa5"]
+[gd_scene load_steps=10 format=3 uid="uid://omc7ani5wfa5"]
 
-[node name="BattleManager" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/BattleManager.gd" id="1_ceb1t"]
+[ext_resource type="PackedScene" uid="uid://c55pg0nyqba0j" path="res://Scene/heroScene.tscn" id="1_vq15d"]
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="2_wq2fn"]
+[ext_resource type="PackedScene" uid="uid://c5nxxn8t3lgyf" path="res://Scene/time_manager.tscn" id="3_dsu4q"]
+[ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
+
+[sub_resource type="Resource" id="Resource_obkqr"]
+resource_local_to_scene = true
+script = ExtResource("2_wq2fn")
+critChance = 0
+energyRegen = 5
+hp = 11
+damage = 3
+attackCooldown = 5.0
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_7s4rw"]
+resource_local_to_scene = true
+script = ExtResource("2_wq2fn")
+critChance = 0
+energyRegen = 5
+hp = 10
+damage = 1
+attackCooldown = 3.0
+preferredTarget = 1
+
+[sub_resource type="Resource" id="Resource_y3trq"]
+resource_local_to_scene = true
+script = ExtResource("2_wq2fn")
+critChance = 0
+energyRegen = 5
+hp = 10
+damage = 100
+attackCooldown = 10.0
+preferredTarget = 2
+
+[sub_resource type="Resource" id="Resource_0ex6m"]
+resource_local_to_scene = true
+script = ExtResource("2_wq2fn")
+critChance = 0
+energyRegen = 5
+hp = 10
+damage = 3
+attackCooldown = 1.0
+preferredTarget = 0
+
+[node name="BattleManager" type="Node2D" node_paths=PackedStringArray("heroArray", "enemyArray")]
+script = ExtResource("1_ceb1t")
+heroArray = [NodePath("HeroScene"), NodePath("HeroScene2"), NodePath("HeroScene3"), NodePath("HeroScene4")]
+enemyArray = [NodePath("Enemy"), NodePath("Enemy2"), NodePath("Enemy3"), NodePath("Enemy4")]
+
+[node name="HeroScene" parent="." instance=ExtResource("1_vq15d")]
+heroData = SubResource("Resource_obkqr")
+
+[node name="TimeManager" parent="HeroScene" instance=ExtResource("3_dsu4q")]
+
+[node name="Enemy" parent="." instance=ExtResource("5_kdsbv")]
+
+[node name="Enemy2" parent="." instance=ExtResource("5_kdsbv")]
+hp = 10
+
+[node name="Enemy3" parent="." instance=ExtResource("5_kdsbv")]
+hp = 11
+
+[node name="HeroScene2" parent="." instance=ExtResource("1_vq15d")]
+heroData = SubResource("Resource_7s4rw")
+
+[node name="TimeManager" parent="HeroScene2" instance=ExtResource("3_dsu4q")]
+
+[node name="HeroScene3" parent="." instance=ExtResource("1_vq15d")]
+heroData = SubResource("Resource_y3trq")
+
+[node name="TimeManager" parent="HeroScene3" instance=ExtResource("3_dsu4q")]
+
+[node name="Enemy4" parent="." instance=ExtResource("5_kdsbv")]
+
+[node name="HeroScene4" parent="." instance=ExtResource("1_vq15d")]
+heroData = SubResource("Resource_0ex6m")
