@@ -7,10 +7,18 @@ var parentHero: Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	parentHero = get_parent()
-	attackTimer.wait_time = parentHero.attackCooldown
+	#attackTimer.wait_time = parentHero.attackCooldown
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func sendAttackSignal():
+	print("My hero is attacking!!!")
+	SignalBus.attack.emit(parentHero)
+
+func sendGainEnergySignal():
+	print("My hero is gaining Energy!")
+	SignalBus.gainEnergy.emit(parentHero)
