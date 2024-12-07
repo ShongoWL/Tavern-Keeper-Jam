@@ -4,3 +4,5 @@ var minTickRate: float = 0.1
 
 var playerGold: int
 var tavernUpkeep: int
+
+var existingHeros: Array[Hero] = []

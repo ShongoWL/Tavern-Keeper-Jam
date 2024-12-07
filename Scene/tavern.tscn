@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0xw7ijalf7vj"]
+
+[ext_resource type="Texture2D" uid="uid://b5b7ibel10tg4" path="res://Art/tavern room.png" id="1_5dcak"]
+
+[node name="Tavern" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(579, 88)
+scale = Vector2(0.268519, 0.268519)
+texture = ExtResource("1_5dcak")
