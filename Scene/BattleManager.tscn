@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c55pg0nyqba0j" path="res://Scene/heroScene.tscn" id="1_vq15d"]
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="3_02ydw"]
 [ext_resource type="PackedScene" uid="uid://c5nxxn8t3lgyf" path="res://Scene/time_manager.tscn" id="3_dsu4q"]
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="3_w2tkj"]
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
 
 [sub_resource type="Resource" id="Resource_0ac4j"]
@@ -15,7 +16,6 @@ hp = 10
 damage = 3
 attackCooldown = 1.0
 preferredTarget = 0
-
 [sub_resource type="Resource" id="Resource_2fgcu"]
 resource_local_to_scene = true
 script = ExtResource("3_02ydw")
@@ -66,7 +66,6 @@ hp = 11
 
 [node name="HeroScene2" parent="." instance=ExtResource("1_vq15d")]
 heroData = SubResource("Resource_2fgcu")
-
 [node name="TimeManager" parent="HeroScene2" instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene3" parent="." instance=ExtResource("1_vq15d")]
