@@ -13,13 +13,16 @@ var attackCooldown:float
 var preferredTarget:int
 var critChance:int
 
+var maxHp: int
+
 @export var ability:Ability
 @export var passive:Passive
 
 var tween: Tween
 
 func _ready() -> void:
-	hp = heroData.hp
+	maxHp = heroData.maxHp
+	hp = maxHp
 	damage = heroData.damage
 	attackCooldown = heroData.attackCooldown
 	preferredTarget = heroData.preferredTarget

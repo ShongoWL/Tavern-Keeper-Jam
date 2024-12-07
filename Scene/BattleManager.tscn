@@ -12,8 +12,8 @@ resource_local_to_scene = true
 script = ExtResource("3_02ydw")
 critChance = 0
 energyRegen = 5
-hp = 10
-damage = 1
+maxHp = 0
+damage = 3
 attackCooldown = 1.0
 preferredTarget = 3
 
@@ -22,8 +22,8 @@ resource_local_to_scene = true
 script = ExtResource("3_02ydw")
 critChance = 0
 energyRegen = 5
-hp = 10
-damage = 2
+maxHp = 0
+damage = 3
 attackCooldown = 1.0
 preferredTarget = 3
 
@@ -32,9 +32,9 @@ resource_local_to_scene = true
 script = ExtResource("3_02ydw")
 critChance = 0
 energyRegen = 5
-hp = 10
-damage = 0
-attackCooldown = 20.0
+maxHp = 0
+damage = 3
+attackCooldown = 1.0
 preferredTarget = 0
 
 [sub_resource type="Resource" id="Resource_0xd7t"]
@@ -53,6 +53,7 @@ script = ExtResource("6_qabx8")
 hp = 10
 damage = 0
 attackCooldown = 0.0
+maxHp = 0
 preferredTarget = 0
 
 [node name="BattleManager" type="Node2D" node_paths=PackedStringArray("heroArray", "enemyArray")]

@@ -11,3 +11,7 @@ signal updateAttackCooldown(who: Entity, amount: float)
 
 #Signal for when an Entity dies
 signal deathSignal(victim: Entity, killer: Entity)
+
+#HP related signals
+signal maxHpGained(who, amount: int)
+

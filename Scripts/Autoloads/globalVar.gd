@@ -6,3 +6,6 @@ var playerGold: int
 var tavernUpkeep: int
 
 var existingHeros: Array[Hero] = []
+
+#This is an enum of constants for the various states of time, trying to come up with a better name than "PARTY" for when the heros arrive
+enum timeState{MORNING, QUESTS, SHOP, PARTY, FIGHT, NIGHT}
