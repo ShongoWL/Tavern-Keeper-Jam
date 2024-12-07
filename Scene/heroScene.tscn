@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c55pg0nyqba0j"]
+[gd_scene load_steps=8 format=3 uid="uid://c55pg0nyqba0j"]
 
 [ext_resource type="Script" path="res://Scripts/heroScene.gd" id="1_2kcso"]
+[ext_resource type="Resource" uid="uid://tssetm4wqidn" path="res://Resources/baseHero.tres" id="2_b3xl4"]
 [ext_resource type="Texture2D" uid="uid://cvhh0f200cl0f" path="res://Art/dude.svg" id="2_og1u5"]
+[ext_resource type="Script" path="res://Scripts/healthbar.gd" id="4_fwubc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4ivu"]
 bg_color = Color(0.0470588, 0.0470588, 0.0313726, 1)
@@ -14,10 +16,19 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_b4ivu")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_62tg6")
 
 [node name="HeroScene" type="Node2D"]
+position = Vector2(267, 499)
 script = ExtResource("1_2kcso")
+heroData = ExtResource("2_b3xl4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_og1u5")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -214.0
+offset_top = -437.0
+offset_right = -119.0
+offset_bottom = -406.0
+text = "test button"
 
 [node name="Healthbar" type="ProgressBar" parent="."]
 offset_left = -74.0
@@ -25,4 +36,22 @@ offset_top = -350.0
 offset_right = 73.0
 offset_bottom = -323.0
 theme = SubResource("Theme_808in")
-fill_mode = 1
+value = 50.0
+show_percentage = false
+script = ExtResource("4_fwubc")
+
+[node name="Label" type="Label" parent="Healthbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="takedamage"]
