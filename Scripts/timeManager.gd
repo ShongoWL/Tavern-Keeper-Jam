@@ -2,19 +2,19 @@ extends Node
 @onready var attackTimer: Timer = $AttackTimer
 @onready var energyTimer: Timer = $EnergyTimer
 
-var parentHero: Node
-
+#var parentHero: Node
+var parentEntity: Node
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	parentHero = get_parent()
-	attackTimer.wait_time = parentHero.heroData.attackCooldown
-	
+	parentEntity = get_parent()
+	if parentEntity is HeroScene:
+		attackTimer.wait_time = parentEntity.heroData.attackCooldown
+		energyTimer.start()
+	else:
+		attackTimer.wait_time = parentEntity.enemyData.attackCooldown
 	attackTimer.start()
-	energyTimer.start()
-	
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,9 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 func sendAttackSignal():
-	#print("My hero is attacking!!!")
-	SignalBus.attack.emit(parentHero)
+	SignalBus.timeToAttack.emit(parentEntity, parentEntity.preferredTarget, parentEntity.damage)
 
 func sendGainEnergySignal():
-	#print("My hero is gaining Energy!")
-	SignalBus.gainEnergy.emit(parentHero)
+	SignalBus.gainEnergy.emit(parentEntity)

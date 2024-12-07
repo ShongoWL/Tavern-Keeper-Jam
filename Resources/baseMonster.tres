@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Entity.gd" id="1_k5gdu"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_k5gdu")
 hp = 5
 damage = 0

@@ -23,7 +23,7 @@ script = ExtResource("3_02ydw")
 critChance = 0
 energyRegen = 5
 hp = 10
-damage = 2
+damage = 1
 attackCooldown = 1.0
 preferredTarget = 3
 

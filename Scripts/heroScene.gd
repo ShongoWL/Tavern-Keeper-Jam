@@ -31,13 +31,22 @@ func _ready() -> void:
 
 func attack():
 	#Tell battlemanager to attack a target
-	get_parent().dealAttack(self, preferredTarget, damage)
+	get_parent().heroDealAttack(self, preferredTarget, damage)
 	#print("I am attacking!")
 
 func updateHealthbar(newHp: int):
 	healthBar.update(newHp)
 	hp = newHp
 	print(name + "'s hp is now" + str(hp))
+
+func takeDamage(attacker:Node, damageTaken: int):
+	if hp - damageTaken < 0:
+		hp = 0
+		#Stop player's timers and remove from array
+		SignalBus.deathSignal.emit(self, attacker)
+	else:
+		hp -= damageTaken
+	
 
 func takedamage():
 	hp -= 10
