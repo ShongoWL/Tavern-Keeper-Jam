@@ -5,7 +5,8 @@ class_name EnemyScene
 
 var damageQueue:Array = []
 
-var hp:int 
+var hp:int
+var maxHp: int
 var damage:int
 var attackCooldown:float
 var preferredTarget:int
@@ -14,7 +15,8 @@ var tween: Tween
 var lock: bool = false
 
 func _ready() -> void:
-	hp = enemyData.hp
+	maxHp = enemyData.maxHp
+	hp = maxHp
 	damage = enemyData.damage
 	attackCooldown = enemyData.damage
 	preferredTarget = enemyData.preferredTarget

@@ -14,4 +14,3 @@ signal deathSignal(victim: Entity, killer: Entity)
 
 #HP related signals
 signal maxHpGained(who, amount: int)
-

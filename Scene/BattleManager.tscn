@@ -7,53 +7,52 @@
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
 [ext_resource type="Script" path="res://Scripts/Entity.gd" id="6_qabx8"]
 
-[sub_resource type="Resource" id="Resource_0ac4j"]
+[sub_resource type="Resource" id="Resource_qc2jp"]
 resource_local_to_scene = true
 script = ExtResource("3_02ydw")
 critChance = 0
 energyRegen = 5
-maxHp = 0
+maxHp = 10
 damage = 3
-attackCooldown = 1.0
-preferredTarget = 3
-
-[sub_resource type="Resource" id="Resource_2fgcu"]
-resource_local_to_scene = true
-script = ExtResource("3_02ydw")
-critChance = 0
-energyRegen = 5
-maxHp = 0
-damage = 3
-attackCooldown = 1.0
-preferredTarget = 3
-
-[sub_resource type="Resource" id="Resource_l4l4u"]
-resource_local_to_scene = true
-script = ExtResource("3_02ydw")
-critChance = 0
-energyRegen = 5
-maxHp = 0
-damage = 3
-attackCooldown = 1.0
+attackCooldown = 2.0
 preferredTarget = 0
 
-[sub_resource type="Resource" id="Resource_0xd7t"]
+[sub_resource type="Resource" id="Resource_6cn51"]
 resource_local_to_scene = true
 script = ExtResource("3_02ydw")
 critChance = 0
 energyRegen = 5
-hp = 10
-damage = 0
-attackCooldown = 20.0
+maxHp = 10
+damage = 3
+attackCooldown = 2.0
 preferredTarget = 0
 
-[sub_resource type="Resource" id="Resource_j5jbc"]
+[sub_resource type="Resource" id="Resource_oiadu"]
+resource_local_to_scene = true
+script = ExtResource("3_02ydw")
+critChance = 0
+energyRegen = 5
+maxHp = 10
+damage = 1
+attackCooldown = 2.0
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_hhire"]
+resource_local_to_scene = true
+script = ExtResource("3_02ydw")
+critChance = 0
+energyRegen = 5
+maxHp = 10
+damage = 3
+attackCooldown = 2.0
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_rjhrn"]
 resource_local_to_scene = true
 script = ExtResource("6_qabx8")
-hp = 10
+maxHp = 10
 damage = 0
 attackCooldown = 0.0
-maxHp = 0
 preferredTarget = 0
 
 [node name="BattleManager" type="Node2D" node_paths=PackedStringArray("heroArray", "enemyArray")]
@@ -62,24 +61,24 @@ heroArray = [NodePath("HeroScene"), NodePath("HeroScene2"), NodePath("HeroScene3
 enemyArray = [NodePath("Enemy")]
 
 [node name="HeroScene" parent="." instance=ExtResource("1_vq15d")]
-heroData = SubResource("Resource_0ac4j")
+heroData = SubResource("Resource_qc2jp")
 
 [node name="TimeManager" parent="HeroScene" instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene2" parent="." instance=ExtResource("1_vq15d")]
-heroData = SubResource("Resource_2fgcu")
+heroData = SubResource("Resource_6cn51")
 
 [node name="TimeManager" parent="HeroScene2" instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene3" parent="." instance=ExtResource("1_vq15d")]
-heroData = SubResource("Resource_l4l4u")
+heroData = SubResource("Resource_oiadu")
 
 [node name="TimeManager" parent="HeroScene3" instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene4" parent="." instance=ExtResource("1_vq15d")]
-heroData = SubResource("Resource_0xd7t")
+heroData = SubResource("Resource_hhire")
 
 [node name="TimeManager" parent="HeroScene4" instance=ExtResource("3_dsu4q")]
 
 [node name="Enemy" parent="." instance=ExtResource("5_kdsbv")]
-enemyData = SubResource("Resource_j5jbc")
+enemyData = SubResource("Resource_rjhrn")
