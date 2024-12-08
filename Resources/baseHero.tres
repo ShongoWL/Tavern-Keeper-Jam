@@ -10,4 +10,5 @@ energyRegen = 5
 maxHp = 10
 damage = 0
 attackCooldown = 2.0
+charName = ""
 preferredTarget = 0

@@ -5,6 +5,8 @@ class_name Entity
 @export var maxHp: int
 @export var damage: int
 @export var attackCooldown: float
+@export var charName: String
+
 
 @export var preferredTarget: int = 0
 
