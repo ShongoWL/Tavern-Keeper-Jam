@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://eb51okcsgypm"]
+
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_wsnkr"]
+[ext_resource type="Texture2D" uid="uid://bfkkgs4l6wqm0" path="res://Art/Items/hammerSprite.tres" id="2_6dqf1"]
+
+[resource]
+script = ExtResource("1_wsnkr")
+itemName = "Card"
+price = 2
+sprite = ExtResource("2_6dqf1")
+Rarity = "Common"

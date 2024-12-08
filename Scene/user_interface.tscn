@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b5qpp5jba35v7" path="res://Art/bearded-idle-4.png" id="1_6nq8u"]
 [ext_resource type="Texture2D" uid="uid://cvhh0f200cl0f" path="res://Art/dude.svg" id="2_euqkr"]
-[ext_resource type="Texture2D" uid="uid://bcf8vb73xwmok" path="res://Art/axeSprite.tres" id="3_yxv4s"]
+[ext_resource type="Texture2D" uid="uid://bcf8vb73xwmok" path="res://Art/Items/axeSprite.tres" id="3_yxv4s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8th0k"]
 

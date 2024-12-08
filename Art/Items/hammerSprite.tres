@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bfkkgs4l6wqm0"]
+
+[ext_resource type="Texture2D" uid="uid://3sw1b6sesau0" path="res://Art/#2 - Transparent & Drop Shadow.png" id="1_epsf3"]
+
+[resource]
+resource_local_to_scene = true
+atlas = ExtResource("1_epsf3")
+region = Rect2(129, 322, 32, 32)
+filter_clip = true

@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://3sw1b6sesau0" path="res://Art/#2 - Transparent & Drop Shadow.png" id="1_hbx6i"]
 
 [resource]
+resource_local_to_scene = true
 atlas = ExtResource("1_hbx6i")
-region = Rect2(321, 164, 30, 30)
+region = Rect2(319, 162, 32, 32)
+filter_clip = true

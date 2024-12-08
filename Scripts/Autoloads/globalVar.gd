@@ -3,7 +3,7 @@ extends Node
 var minTickRate: float = 0.1
 
 var playerGold: int
-var tavernUpkeep: int
+var rent: int
 
 var existingHeros: Array[Hero] = []
 
