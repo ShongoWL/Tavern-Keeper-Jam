@@ -1,7 +1,9 @@
 extends Node2D
 
-@onready var textureRect: TextureRect = $TextureRect
-@onready var textureRect2: TextureRect = $TextureRect2
+@onready var textureRect: Sprite2D = $TextureRect
+@onready var textureRect2: Sprite2D = $TextureRect2
+@onready var textureRectOnScreen: VisibleOnScreenNotifier2D = $TextureRect/VisibleOnScreenNotifier2D
+@onready var textureRectOnScreen2: VisibleOnScreenNotifier2D = $TextureRect2/VisibleOnScreenNotifier2D
 
 @onready var timer: Timer = $Timer
 
@@ -13,37 +15,40 @@ var tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	textureRect.size = viewportRect.size
-	textureRect2.size = viewportRect.size
-	
-	textureRect.set_position(Vector2(0,0))
+	textureRect.set_position(Vector2(viewportRect.size.x/2,viewportRect.size.y/2))
 	textureRect2.set_position(Vector2(viewportRect.size.x,0))
 
 func nextPhase() -> void:
 	print("button pressed")
-	match textureRect.position.x:
-		0:
+	match textureRectOnScreen.is_on_screen():
+		true:
 			print("Im at 0")
 			tween = create_tween()
 			#This tween moves textureRect to a negative value equal to its size (-1920)
-			tween.tween_property(textureRect, "transform.position", Vector2(-viewportRect.size.x, textureRect.position.y),1)
-			tween.parallel().tween_property(textureRect2, "transform.position", Vector2(0, textureRect2.position.y),1)
+			tween.tween_property(textureRect, "position", Vector2(-viewportRect.size.x, textureRect.position.y),0.8)
+			tween.parallel().tween_property(textureRect2, "position", Vector2(viewportRect.size.x/2, textureRect2.position.y),1)
 			
-			moveRectToRightmostPos(textureRect2)
-		viewportRect.size.x:
+			timer.start()
+		false:
 			print("hi")
 			tween = create_tween()
 			#This tween moves textureRect2 to a negative value equal to its size (-1920)
-			tween.tween_property(textureRect2, "position", Vector2(-viewportRect.size.x, textureRect.position.y),1)
-			tween.parallel().tween_property(textureRect, "position", Vector2(0, textureRect.position.y),1)
+			tween.tween_property(textureRect2, "position", Vector2(-viewportRect.size.x, textureRect.position.y),0.8)
+			tween.parallel().tween_property(textureRect, "position", Vector2(viewportRect.size.x/2, textureRect.position.y),1)
 			
-			moveRectToRightmostPos(textureRect)
+			timer.start()
 
-func moveRectToRightmostPos(rectangle: TextureRect):
-	timer.start()
-	await timer.timeout
-	
-	rectangle.visible = false
-	rectangle.position = Vector2(viewportRect.size,0)
-	rectangle.visible = true
-	print("it works if this happens a second after the original button press")
+func moveRectToRightmostPos():
+	match textureRectOnScreen.is_on_screen():
+		true:
+			textureRect2.visible = false
+			textureRect2.position.x = viewportRect.size.x * 1.5
+			textureRect2.z_index = -1
+			textureRect.z_index = 1
+			textureRect2.visible = true
+		false:
+			textureRect.visible = false
+			textureRect.position.x = viewportRect.size.x * 1.5
+			textureRect.z_index = -1
+			textureRect2.z_index = 1
+			textureRect.visible = true
