@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="bulkUp" load_steps=2 format=3 uid="uid://dgxa3dcue43ad"]
+
+[ext_resource type="Script" path="res://Scripts/AbilityScripts/bulkUpAbility.gd" id="1_wmhn5"]
+
+[resource]
+script = ExtResource("1_wmhn5")
+damageBoost = 4
+critChanceBoost = 3
+abilityName = "Bulk Up"
+abilityCost = 25

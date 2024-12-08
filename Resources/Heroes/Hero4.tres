@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Hero" load_steps=5 format=3 uid="uid://dcwlot35vf35u"]
+
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_6ug50"]
+[ext_resource type="Resource" uid="uid://c3s4q7yeq1fp6" path="res://Resources/baseAbility.tres" id="1_rfblt"]
+[ext_resource type="Script" path="res://Scripts/Passive.gd" id="2_vk03i"]
+
+[sub_resource type="Resource" id="Resource_l0muq"]
+script = ExtResource("2_vk03i")
+passiveName = ""
+passiveDescription = ""
+
+[resource]
+script = ExtResource("1_6ug50")
+critChance = 0
+energyRegen = 0
+energyLevel = 0.0
+ability = ExtResource("1_rfblt")
+passive = SubResource("Resource_l0muq")
+maxHp = 1
+damage = 0
+attackCooldown = 100.0
+charName = "Hero4"
+preferredTarget = 0

@@ -14,6 +14,7 @@ signal deathSignal(victim: Entity, killer: Entity)
 
 #HP related signals
 signal maxHpGained(who, amount: int)
+signal hpLoss(who: Entity, amount: int)
 
 #Signals related to combat victory/defeat
 signal combatOver(battle: BattleManager, isVictory: bool)

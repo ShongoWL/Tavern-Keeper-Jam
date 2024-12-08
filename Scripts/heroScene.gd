@@ -21,9 +21,6 @@ var maxHp: int
 #holds all calls for incoming damage until they can be safely managed
 var damageQueue:Array = []
 
-@export var ability:Ability
-@export var passive:Passive
-
 var tween: Tween
 
 func _ready() -> void:
@@ -39,6 +36,7 @@ func _ready() -> void:
 	
 	#Run this at the end of ready to make sure healthBar has access to the right values
 	healthBar.initializeValues()
+	heroData.passive.setup(self)
 	SignalBus.combatOver.connect(combatOver)
 	#SignalBus.gainEnergy.connect(energyGain)
 
@@ -68,22 +66,41 @@ func takeDamage(attacker: EnemyScene, damageTaken: int):
 	if hp - damageTaken <= 0:
 		hp -= damageTaken
 		#Stop player's timers and remove from array
+		SignalBus.hpLoss.emit(self, damageTaken)
 		print("hero has died, throwing death signal")
 		SignalBus.deathSignal.emit(self, attacker)
 		self.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
 		hp -= damageTaken
-		print(charName," has taken,", damageTaken,"damage, new hp is: ", hp)
+		SignalBus.hpLoss.emit(self, damageTaken)
+		print(charName," has taken, ", damageTaken," damage, new hp is: ", hp)
 
 func gainEnergy():
 	var amountGain = (energyRegen * GlobalVar.minTickRate)
 	energyLevel = snapped(energyLevel + amountGain, .1)
-	if energyLevel >= ability.abilityCost:
-		ability.onEnergyMet()
-		energyLevel -= ability.abilityCost
-		print(charName, " spent ", ability.abilityCost, " to use their ability: ", ability.abilityName)
+	if heroData != null:
+		if energyLevel >= heroData.ability.abilityCost:
+			print(charName, " spent ", heroData.ability.abilityCost, " to use their ability: ", heroData.ability.abilityName)
+			heroData.ability.onEnergyMet(self)
+			energyLevel -= heroData.ability.abilityCost
+		#else:
+			#print(charName, " gained ", amountGain, " energy. Total: ", energyLevel)
+
+#change energy can be positive or negative
+func changeEnergy(amountChange: int):
+	if amountChange > 0:
+		energyLevel += amountChange
+		if energyLevel >= heroData.ability.abilityCost:
+			print(charName, " spent ", heroData.ability.abilityCost, " to use their ability: ", heroData.ability.abilityName)
+			heroData.ability.onEnergyMet(self)
+			energyLevel -= heroData.ability.abilityCost
+		else:
+			print(charName, " gained ", amountChange, " energy. Total: ", energyLevel)
 	else:
-		print(charName, " gained ", amountGain, " energy. Total: ", energyLevel)
+		if energyLevel - amountChange <= 0:
+			energyLevel = 0
+		else:
+			energyLevel -= amountChange
 
 func takedamage():
 	hp -= 10
@@ -92,3 +109,6 @@ func combatOver(combatManager, isVictory):
 	if combatManager == get_parent():
 		self.process_mode = Node.PROCESS_MODE_DISABLED
 		print("Combat has ended, ", charName, " is stopping.")
+
+func getHp()->int:
+	return hp

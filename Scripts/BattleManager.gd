@@ -32,12 +32,13 @@ func callEnergyGain(target: HeroScene):
 		target.gainEnergy()
 
 func heroDealAttack(attacker:HeroScene, preferredTarget:int, damage:int):
+	var totalDamage = calculateDamage(attacker, damage)
 	if enemyArray.size() == 0:
 		return
 	if preferredTarget > enemyArray.size()-1:
-		enemyArray[enemyArray.size()-1].queueDamage(attacker, damage)
+		enemyArray[enemyArray.size()-1].queueDamage(attacker, totalDamage)
 	else:
-		enemyArray[preferredTarget].queueDamage(attacker, damage)
+		enemyArray[preferredTarget].queueDamage(attacker, totalDamage)
 
 func enemyDealAttack(attacker:EnemyScene, preferredTarget:int, damage:int):
 	if heroArray.size() == 0:
@@ -48,8 +49,22 @@ func enemyDealAttack(attacker:EnemyScene, preferredTarget:int, damage:int):
 		heroArray[heroArray.size()-1].queueDamage(attacker, damage)
 	else:
 		heroArray[preferredTarget].queueDamage(attacker, damage)
-		
 
+func calculateDamage(attacker: HeroScene, damage) -> int:
+	var finalDamage: int
+	var isCrit = rollCrit(attacker)
+	if isCrit == true:
+		finalDamage = damage*attacker.heroData.critModifier
+	return finalDamage
+
+func rollCrit(attacker: HeroScene) -> bool:
+	var isCrit = false
+	var diceRoll = randi_range(1,100)
+	print("Rolled: ", diceRoll, ". Need ", attacker.critChance, " or lower to crit")
+	if diceRoll <= attacker.critChance:
+		isCrit = true
+		print("OH MY GOD, YOU CRIT YOU MADMAN!!!")
+	return isCrit
 
 func deathNotif(victim, killer):
 	if victim is HeroScene:
