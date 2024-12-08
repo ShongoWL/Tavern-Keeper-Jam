@@ -17,3 +17,6 @@ signal maxHpGained(who, amount: int)
 
 #Signals related to combat victory/defeat
 signal combatOver(battle: BattleManager, isVictory: bool)
+
+#Shop related signals
+signal itemBought(item: Item, price: int)
