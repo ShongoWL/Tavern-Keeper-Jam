@@ -1,10 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0xw7ijalf7vj"]
+[gd_scene load_steps=6 format=3 uid="uid://d0xw7ijalf7vj"]
 
+[ext_resource type="Shader" path="res://Art/Shaders/dithering.gdshader" id="1_2xt5e"]
 [ext_resource type="Texture2D" uid="uid://b5b7ibel10tg4" path="res://Art/tavern room.png" id="1_5dcak"]
+[ext_resource type="Texture2D" uid="uid://c81gue1ka30i6" path="res://Art/Palettes/eroge-48-32x.png" id="2_3iout"]
+[ext_resource type="Texture2D" uid="uid://d548q26oxypp" path="res://Art/Shaders/bayer16tile2.png" id="3_kcyv7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpw31"]
+shader = ExtResource("1_2xt5e")
+shader_parameter/u_bit_depth = 12
+shader_parameter/u_contrast = 1.0
+shader_parameter/u_offset = 0.0
+shader_parameter/u_dither_size = 16
+shader_parameter/u_dither_tex = ExtResource("3_kcyv7")
+shader_parameter/u_color_tex = ExtResource("2_3iout")
 
 [node name="Tavern" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mpw31")
 position = Vector2(579, 88)
 scale = Vector2(0.268519, 0.268519)
 texture = ExtResource("1_5dcak")
