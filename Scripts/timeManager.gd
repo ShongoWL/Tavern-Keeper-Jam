@@ -25,4 +25,5 @@ func sendAttackSignal():
 	SignalBus.timeToAttack.emit(parentEntity, parentEntity.preferredTarget, parentEntity.damage)
 
 func sendGainEnergySignal():
+	#print("sending energy signal")
 	SignalBus.gainEnergy.emit(parentEntity)

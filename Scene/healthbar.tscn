@@ -13,6 +13,7 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_b4ivu")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_62tg6")
 
 [node name="Healthbar" type="ProgressBar"]
+process_mode = 3
 offset_left = -74.0
 offset_top = -350.0
 offset_right = 73.0
