@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="painEnergyGain" load_steps=2 format=3 uid="uid://66sba7jooha6"]
+
+[ext_resource type="Script" path="res://Scripts/PassiveScripts/painEnergyGain.gd" id="1_e23st"]
+
+[resource]
+script = ExtResource("1_e23st")
+energyGain = 7
+passiveName = ""
+passiveDescription = ""

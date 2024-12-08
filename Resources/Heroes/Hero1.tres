@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Hero" load_steps=4 format=3 uid="uid://ci6wkmgdgipb3"]
+
+[ext_resource type="Resource" uid="uid://dgxa3dcue43ad" path="res://Resources/Abilities/bulkUp.tres" id="1_dy2nl"]
+[ext_resource type="Resource" uid="uid://66sba7jooha6" path="res://Resources/Passives/painEnergyGain.tres" id="2_6pend"]
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="3_1p4h8"]
+
+[resource]
+script = ExtResource("3_1p4h8")
+critChance = 99
+energyRegen = 5
+energyLevel = 0.0
+critModifier = 2
+ability = ExtResource("1_dy2nl")
+passive = ExtResource("2_6pend")
+maxHp = 999
+damage = 4
+attackCooldown = 2.0
+charName = "Hero1"
+preferredTarget = 0
