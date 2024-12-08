@@ -8,4 +8,5 @@ script = ExtResource("1_k5gdu")
 maxHp = 10
 damage = 0
 attackCooldown = 0.0
+charName = ""
 preferredTarget = 0

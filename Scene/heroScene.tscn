@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c55pg0nyqba0j"]
+[gd_scene load_steps=6 format=3 uid="uid://c55pg0nyqba0j"]
 
 [ext_resource type="Script" path="res://Scripts/heroScene.gd" id="1_2kcso"]
 [ext_resource type="Resource" uid="uid://tssetm4wqidn" path="res://Resources/baseHero.tres" id="2_b3xl4"]
 [ext_resource type="Texture2D" uid="uid://cvhh0f200cl0f" path="res://Art/dude.svg" id="2_og1u5"]
+[ext_resource type="Resource" uid="uid://c3s4q7yeq1fp6" path="res://Resources/baseAbility.tres" id="3_d4nlb"]
 [ext_resource type="PackedScene" uid="uid://u5ora2halxie" path="res://Scene/healthbar.tscn" id="4_67fsq"]
 
 [node name="HeroScene" type="Node2D"]
 position = Vector2(267, 499)
 script = ExtResource("1_2kcso")
 heroData = ExtResource("2_b3xl4")
+ability = ExtResource("3_d4nlb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_og1u5")
