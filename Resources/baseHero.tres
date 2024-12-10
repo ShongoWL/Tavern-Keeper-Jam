@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Hero" load_steps=2 format=3 uid="uid://tssetm4wqidn"]
+[gd_resource type="Resource" script_class="Hero" load_steps=3 format=3 uid="uid://tssetm4wqidn"]
 
+[ext_resource type="Resource" uid="uid://dgxa3dcue43ad" path="res://Resources/Abilities/bulkUp.tres" id="1_bm5bo"]
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_gjpee"]
 
 [resource]
@@ -7,8 +8,10 @@ resource_local_to_scene = true
 script = ExtResource("1_gjpee")
 critChance = 0
 energyRegen = 5
+energyLevel = 0.0
+ability = ExtResource("1_bm5bo")
 maxHp = 10
 damage = 0
 attackCooldown = 2.0
-charName = ""
+charName = "Hero 1"
 preferredTarget = 0

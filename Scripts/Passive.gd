@@ -2,10 +2,7 @@ extends Resource
 class_name Passive
 
 @export var passiveName: String
-@export var passiveEffect: Script
+@export var passiveDescription: String
 
-#possible function to start the passive script when auto battler starts 
-#func startPassive():
-	#Call start up script
-	#passiveEffect.start()
-	#pass
+func setup(hero: HeroScene):
+	pass
