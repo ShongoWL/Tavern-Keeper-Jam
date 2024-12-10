@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmv26jdes56uq"]
 
-[ext_resource type="Script" path="res://Scripts/shopPanel.gd" id="1_3t8ta"]
-[ext_resource type="Texture2D" uid="uid://tifrn30sr18l" path="res://Art/shopBox.png" id="1_g7wvi"]
+[ext_resource type="Texture2D" uid="uid://tifrn30sr18l" path="res://Art/shopBox.png" id="1_3woqp"]
+[ext_resource type="Script" path="res://Scripts/shopPanel.gd" id="2_hoaqp"]
 
 [node name="ShopPanel" type="TextureRect"]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_g7wvi")
-script = ExtResource("1_3t8ta")
+texture = ExtResource("1_3woqp")
+script = ExtResource("2_hoaqp")
 
 [node name="ItemSprite" type="TextureRect" parent="."]
 z_index = 1

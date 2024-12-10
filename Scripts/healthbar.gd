@@ -12,7 +12,7 @@ var labelHp: int
 func initializeValues() -> void:
 	SignalBus.maxHpGained.connect(maxHpIncreased)
 	
-	max_value = parental.heroData.maxHp #change to max hp
+	max_value = parental.maxHp #change to max hp
 	value = max_value
 	labelHp = value
 	label.text = str(labelHp)+"/"+str(max_value)

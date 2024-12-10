@@ -1,8 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqu3esdd6qywr"]
+[gd_scene load_steps=12 format=3 uid="uid://dqu3esdd6qywr"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyScene.gd" id="1_hba68"]
 [ext_resource type="Resource" uid="uid://d2qyrp0j2amqk" path="res://Resources/baseMonster.tres" id="2_6hlaq"]
+[ext_resource type="Texture2D" uid="uid://djoke2qg1k6q1" path="res://Art/IDLE.png" id="3_nevo2"]
+[ext_resource type="PackedScene" uid="uid://u5ora2halxie" path="res://Scene/UI/healthbar.tscn" id="4_hp0el"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgvyd"]
+atlas = ExtResource("3_nevo2")
+region = Rect2(0, 0, 148, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c15yw"]
+atlas = ExtResource("3_nevo2")
+region = Rect2(148, 0, 148, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl5ir"]
+atlas = ExtResource("3_nevo2")
+region = Rect2(296, 0, 148, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7u1n"]
+atlas = ExtResource("3_nevo2")
+region = Rect2(444, 0, 148, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f06j"]
+atlas = ExtResource("3_nevo2")
+region = Rect2(592, 0, 148, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_280y2"]
+atlas = ExtResource("3_nevo2")
+region = Rect2(740, 0, 148, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubx0a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgvyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c15yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl5ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7u1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f06j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_280y2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_hba68")
 enemyData = ExtResource("2_6hlaq")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-22, -51)
+scale = Vector2(-2, 2)
+sprite_frames = SubResource("SpriteFrames_ubx0a")
+autoplay = "default"
+frame_progress = 0.29513
+
+[node name="Healthbar" parent="." node_paths=PackedStringArray("parental") instance=ExtResource("4_hp0el")]
+offset_top = -126.0
+offset_bottom = -99.0
+parental = NodePath("..")

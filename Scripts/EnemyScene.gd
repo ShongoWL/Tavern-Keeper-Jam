@@ -3,9 +3,11 @@ class_name EnemyScene
 
 @export var enemyData: Entity
 
+@onready var healthBar: Healthbar = $Healthbar
+
 var damageQueue:Array = []
 
-var hp:int
+var hp:int : set = updateHealthbar
 var maxHp: int
 var damage:int
 var attackCooldown:float
@@ -23,6 +25,7 @@ func _ready() -> void:
 	preferredTarget = enemyData.preferredTarget
 	charName = enemyData.charName
 	
+	healthBar.initializeValues()
 	SignalBus.combatOver.connect(combatOver)
 
 func _process(delta: float) -> void:
@@ -57,3 +60,8 @@ func combatOver(combatManager, isVictory):
 	if combatManager == get_parent():
 		self.process_mode = Node.PROCESS_MODE_DISABLED
 		print("Combat has ended, ", charName, " is stopping.")
+
+func updateHealthbar(newHp: int):
+	healthBar.update(newHp)
+	hp = newHp
+	print(name + "'s hp is now " + str(hp))

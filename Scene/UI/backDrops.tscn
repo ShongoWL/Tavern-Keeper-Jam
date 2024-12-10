@@ -1,26 +1,26 @@
 [gd_scene load_steps=7 format=3 uid="uid://bk7uxw1ljabfb"]
 
-[ext_resource type="Script" path="res://Scripts/backDrops.gd" id="1_bc7mo"]
-[ext_resource type="Shader" path="res://Art/Shaders/dithering.gdshader" id="3_mtrdh"]
-[ext_resource type="Texture2D" uid="uid://beq25k5f7uxm7" path="res://Art/morningState.png" id="3_qa3mx"]
-[ext_resource type="Texture2D" uid="uid://bog6k0hbvmil3" path="res://Art/Palettes/slso8-32x.png" id="4_kudod"]
-[ext_resource type="Texture2D" uid="uid://d548q26oxypp" path="res://Art/Shaders/bayer16tile2.png" id="5_gsivj"]
+[ext_resource type="Script" path="res://Scripts/backDrops.gd" id="1_jg3cn"]
+[ext_resource type="Texture2D" uid="uid://beq25k5f7uxm7" path="res://Art/morningState.png" id="2_5x40h"]
+[ext_resource type="Shader" path="res://Art/Shaders/dithering.gdshader" id="3_idqaf"]
+[ext_resource type="Texture2D" uid="uid://bog6k0hbvmil3" path="res://Art/Palettes/slso8-32x.png" id="4_8w4dm"]
+[ext_resource type="Texture2D" uid="uid://d548q26oxypp" path="res://Art/Shaders/bayer16tile2.png" id="5_e1r5b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2k0b"]
-shader = ExtResource("3_mtrdh")
+shader = ExtResource("3_idqaf")
 shader_parameter/u_bit_depth = 7
 shader_parameter/u_contrast = 1.0
 shader_parameter/u_offset = 0.0
 shader_parameter/u_dither_size = 6
-shader_parameter/u_dither_tex = ExtResource("5_gsivj")
-shader_parameter/u_color_tex = ExtResource("4_kudod")
+shader_parameter/u_dither_tex = ExtResource("5_e1r5b")
+shader_parameter/u_color_tex = ExtResource("4_8w4dm")
 
 [node name="BackDrops" type="Node2D"]
-script = ExtResource("1_bc7mo")
+script = ExtResource("1_jg3cn")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
 position = Vector2(958.222, 540)
-texture = ExtResource("3_qa3mx")
+texture = ExtResource("2_5x40h")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="TextureRect"]
 
@@ -28,7 +28,7 @@ texture = ExtResource("3_qa3mx")
 z_index = 1
 material = SubResource("ShaderMaterial_b2k0b")
 position = Vector2(2918, 532.85)
-texture = ExtResource("3_qa3mx")
+texture = ExtResource("2_5x40h")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="TextureRect2"]
 
