@@ -9,6 +9,7 @@ script = ExtResource("1_gjpee")
 critChance = 0
 energyRegen = 5
 energyLevel = 0.0
+critModifier = 2
 ability = ExtResource("1_bm5bo")
 maxHp = 10
 damage = 0
