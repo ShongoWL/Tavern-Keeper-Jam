@@ -14,6 +14,7 @@ script = ExtResource("1_c7m7d")
 critChance = 0
 energyRegen = 0
 energyLevel = 0.0
+critModifier = 2
 ability = ExtResource("1_5g3dg")
 passive = SubResource("Resource_vca1o")
 maxHp = 1

@@ -36,9 +36,8 @@ func _ready() -> void:
 	
 	#Run this at the end of ready to make sure healthBar has access to the right values
 	healthBar.initializeValues()
-	heroData.passive.setup(self)
-	SignalBus.combatOver.connect(combatOver)
-	#SignalBus.gainEnergy.connect(energyGain)
+	if heroData.passive:
+		heroData.passive.setup(self)
 
 func _process(delta: float) -> void:
 	#print("the monster's health is now ", hp)
@@ -47,11 +46,6 @@ func _process(delta: float) -> void:
 		action.call()
 	for number in tempSize:
 		damageQueue.pop_front()
-
-func attack():
-	#Tell battlemanager to attack a target
-	get_parent().heroDealAttack(self, preferredTarget, damage)
-	#print("I am attacking!")
 
 func updateHealthbar(newHp: int):
 	healthBar.update(newHp)
@@ -102,13 +96,9 @@ func changeEnergy(amountChange: int):
 		else:
 			energyLevel -= amountChange
 
-func takedamage():
-	hp -= 10
-
-func combatOver(combatManager, isVictory):
-	if combatManager == get_parent():
-		self.process_mode = Node.PROCESS_MODE_DISABLED
-		print("Combat has ended, ", charName, " is stopping.")
+func combatOver(isVictory: bool):
+	self.process_mode = Node.PROCESS_MODE_DISABLED
+	print("Combat has ended, ", charName, " is stopping.")
 
 func getHp()->int:
 	return hp

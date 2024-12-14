@@ -1,15 +1,26 @@
 class_name BattleManager extends Node2D
 
-@export var heroArray:Array[HeroScene] = []
+@onready var heroGroup: Node = %HeroGroup
+@onready var enemyGroup: Node = %EnemyGroup
 
-@export var enemyArray:Array[EnemyScene] = []
+@onready var heroArray:Array[HeroScene] = []
+@onready var enemyArray:Array[EnemyScene] = [] ##A, I changed these to onready
+## vars so we don't need to export them by hand. Now in the ready function
+## battlemanager accesses the HeroGroup & EnemyGroup nodes to fill the arrays
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.timeToAttack.connect(callAttacker)
 	SignalBus.deathSignal.connect(deathNotif)
 	SignalBus.gainEnergy.connect(callEnergyGain)
-	pass # Replace with function body.
+	
+	for i in heroGroup.get_children():
+		if i is HeroScene:
+			heroArray.append(i)
+	
+	for i in enemyGroup.get_children():
+		if i is EnemyScene:
+			enemyArray.append(i)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,7 +62,7 @@ func enemyDealAttack(attacker:EnemyScene, preferredTarget:int, damage:int):
 		heroArray[preferredTarget].queueDamage(attacker, damage)
 
 func calculateDamage(attacker: HeroScene, damage) -> int:
-	var finalDamage: int
+	var finalDamage: int = damage
 	var isCrit = rollCrit(attacker)
 	if isCrit == true:
 		finalDamage = damage*attacker.heroData.critModifier
@@ -89,8 +100,15 @@ func deathNotif(victim, killer):
 			combatOver(self, true)
 
 
-func combatOver(combat:BattleManager, isVictory: bool):
+func combatOver(combat:BattleManager, isVictory: bool):##A, I messed with this so the heroes and 
+	## enemies won't need to listen for a signal
 	SignalBus.combatOver.emit(combat, isVictory)
+	
+	for i in heroGroup.get_children(): 
+		i.combatOver(isVictory)
+	for i in enemyGroup.get_children():
+		i.combatOver(isVictory)
+	
 	if isVictory:
 		print("The heroes won!!!")
 	else:

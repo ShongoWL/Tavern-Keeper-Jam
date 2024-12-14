@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd8dqs5xe57fw"]
 
-[ext_resource type="PackedScene" uid="uid://bmv26jdes56uq" path="res://Scene/shopPanel.tscn" id="1_lj2dt"]
+[ext_resource type="PackedScene" uid="uid://bmv26jdes56uq" path="res://Scene/UI/shopPanel.tscn" id="1_lj2dt"]
 [ext_resource type="Script" path="res://Scripts/shopUi.gd" id="1_r4axm"]
 
 [node name="ShopUI" type="Control"]

@@ -1,86 +1,61 @@
-[gd_scene load_steps=13 format=3 uid="uid://omc7ani5wfa5"]
+[gd_scene load_steps=6 format=3 uid="uid://omc7ani5wfa5"]
 
 [ext_resource type="Script" path="res://Scripts/BattleManager.gd" id="1_ceb1t"]
 [ext_resource type="PackedScene" uid="uid://c55pg0nyqba0j" path="res://Scene/heroScene.tscn" id="1_vq15d"]
-[ext_resource type="Resource" uid="uid://ci6wkmgdgipb3" path="res://Resources/Heroes/Hero1.tres" id="3_0641x"]
 [ext_resource type="PackedScene" uid="uid://c5nxxn8t3lgyf" path="res://Scene/time_manager.tscn" id="3_dsu4q"]
-[ext_resource type="Resource" uid="uid://buj5go842m74u" path="res://Resources/Heroes/Hero2.tres" id="5_hwupf"]
+[ext_resource type="Resource" uid="uid://c5n6dr08pegpd" path="res://Resources/Heroes/Barbarian.tres" id="3_sjcbm"]
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
-[ext_resource type="Script" path="res://Scripts/Entity.gd" id="6_qabx8"]
-[ext_resource type="Resource" uid="uid://bl1ejfohikbi2" path="res://Resources/Heroes/Hero3.tres" id="6_up2v3"]
-[ext_resource type="Resource" uid="uid://dcwlot35vf35u" path="res://Resources/Heroes/Hero4.tres" id="7_ho0q1"]
 
-[sub_resource type="Resource" id="Resource_15cir"]
-resource_local_to_scene = true
-script = ExtResource("6_qabx8")
-maxHp = 5
-damage = 2
-attackCooldown = 30.0
-charName = "Enemy 2"
-preferredTarget = 0
-
-[sub_resource type="Resource" id="Resource_k6dks"]
-resource_local_to_scene = true
-script = ExtResource("6_qabx8")
-maxHp = 5
-damage = 1
-attackCooldown = 30.0
-charName = "Enemy 3"
-preferredTarget = 0
-
-[sub_resource type="Resource" id="Resource_b7sgr"]
-resource_local_to_scene = true
-script = ExtResource("6_qabx8")
-maxHp = 5
-damage = 1
-attackCooldown = 30.0
-charName = "Enemy 4"
-preferredTarget = 0
-
-[node name="BattleManager" type="Node2D" node_paths=PackedStringArray("heroArray", "enemyArray")]
+[node name="BattleManager" type="Node2D"]
 script = ExtResource("1_ceb1t")
-heroArray = [NodePath("HeroScene")]
-enemyArray = [NodePath("Enemy")]
 
-[node name="HeroScene" parent="." instance=ExtResource("1_vq15d")]
+[node name="HeroGroup" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="HeroScene" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(564, 509)
-heroData = ExtResource("3_0641x")
 
-[node name="TimeManager" parent="HeroScene" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene" instance=ExtResource("3_dsu4q")]
 
-[node name="HeroScene2" parent="." instance=ExtResource("1_vq15d")]
+[node name="HeroScene2" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(408, 508)
-heroData = ExtResource("5_hwupf")
+heroData = ExtResource("3_sjcbm")
 
-[node name="TimeManager" parent="HeroScene2" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene2" instance=ExtResource("3_dsu4q")]
 
-[node name="HeroScene3" parent="." instance=ExtResource("1_vq15d")]
+[node name="HeroScene3" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(252, 507)
-heroData = ExtResource("6_up2v3")
+heroData = ExtResource("3_sjcbm")
 
-[node name="TimeManager" parent="HeroScene3" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene3" instance=ExtResource("3_dsu4q")]
 
-[node name="HeroScene4" parent="." instance=ExtResource("1_vq15d")]
+[node name="HeroScene4" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(98, 506)
-heroData = ExtResource("7_ho0q1")
+heroData = ExtResource("3_sjcbm")
 
-[node name="TimeManager" parent="HeroScene4" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene4" instance=ExtResource("3_dsu4q")]
 
-[node name="Enemy" parent="." instance=ExtResource("5_kdsbv")]
+[node name="EnemyGroup" type="Node" parent="."]
+unique_name_in_owner = true
 
-[node name="TimeManager" parent="Enemy" instance=ExtResource("3_dsu4q")]
+[node name="Enemy" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
+position = Vector2(873, 568)
 
-[node name="Enemy2" parent="." instance=ExtResource("5_kdsbv")]
-enemyData = SubResource("Resource_15cir")
+[node name="TimeManager" parent="EnemyGroup/Enemy" instance=ExtResource("3_dsu4q")]
 
-[node name="TimeManager" parent="Enemy2" instance=ExtResource("3_dsu4q")]
+[node name="Node" type="Node" parent="EnemyGroup/Enemy"]
 
-[node name="Enemy3" parent="." instance=ExtResource("5_kdsbv")]
-enemyData = SubResource("Resource_k6dks")
+[node name="Enemy2" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
+position = Vector2(1032, 570)
 
-[node name="TimeManager" parent="Enemy3" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="EnemyGroup/Enemy2" instance=ExtResource("3_dsu4q")]
 
-[node name="Enemy4" parent="." instance=ExtResource("5_kdsbv")]
-enemyData = SubResource("Resource_b7sgr")
+[node name="Enemy3" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
+position = Vector2(1207, 559)
 
-[node name="TimeManager" parent="Enemy4" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="EnemyGroup/Enemy3" instance=ExtResource("3_dsu4q")]
+
+[node name="Enemy4" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
+position = Vector2(1358, 572)
+
+[node name="TimeManager" parent="EnemyGroup/Enemy4" instance=ExtResource("3_dsu4q")]
