@@ -3,8 +3,8 @@ class_name Entity
 
 #Export Values
 @export var maxHp: int
-@export var damage: int
-@export var attackCooldown: float
+@export var damage: int = 1
+@export var attackCooldown: float = 5
 @export var charName: String
 
 

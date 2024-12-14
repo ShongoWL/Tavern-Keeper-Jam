@@ -26,7 +26,6 @@ func _ready() -> void:
 	charName = enemyData.charName
 	
 	healthBar.initializeValues()
-	SignalBus.combatOver.connect(combatOver)
 
 func _process(delta: float) -> void:
 	#print("the monster's health is now ", hp)
@@ -34,7 +33,9 @@ func _process(delta: float) -> void:
 	for action in damageQueue:
 		action.call()
 	for number in tempSize:
-		damageQueue.pop_front()
+		damageQueue.pop_front() ##A, This should maybe be pop_at(number) instead?
+		## I started to change it but I'm trying to debug the 0 damage from heroes thing
+		## so I don't want to change too much at once
 
 func queueDamage(attacker: HeroScene, damageTaken: int):
 	damageQueue.push_back(takeDamage.bind(attacker, damageTaken))
@@ -52,14 +53,9 @@ func takeDamage(attacker: HeroScene, damageTaken: int):
 		hp -= damageTaken
 		print(charName, " has been hit for ", damageTaken," damage, new hp is: ", hp)
 
-func attack():
-	#Tell battlemanager to attack a target
-	get_parent().enemyDealAttack(self, preferredTarget, damage)
-	
-func combatOver(combatManager, isVictory):
-	if combatManager == get_parent():
-		self.process_mode = Node.PROCESS_MODE_DISABLED
-		print("Combat has ended, ", charName, " is stopping.")
+func combatOver(isVictory: bool):
+	self.process_mode = Node.PROCESS_MODE_DISABLED
+	print("Combat has ended, ", charName, " is stopping.")
 
 func updateHealthbar(newHp: int):
 	healthBar.update(newHp)

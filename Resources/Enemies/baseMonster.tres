@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://d2qyrp0j2amqk"]
+
+[ext_resource type="Script" path="res://Scripts/Entity.gd" id="1_rhg1d"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_rhg1d")
+maxHp = 50
+damage = 5
+attackCooldown = 4.0
+charName = "Default Enemy"
+preferredTarget = 0
