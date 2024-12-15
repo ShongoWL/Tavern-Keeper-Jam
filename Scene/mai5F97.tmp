@@ -7,4 +7,4 @@
 
 [node name="UserInterface" parent="." instance=ExtResource("1_uw7tw")]
 
-[node name="Shop" parent="." instance=ExtResource("2_6nr2f")]
+[node name="Shop" parent="UserInterface" instance=ExtResource("2_6nr2f")]

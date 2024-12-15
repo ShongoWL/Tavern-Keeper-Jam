@@ -28,12 +28,13 @@ testItem = ExtResource("2_e0ilk")
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
 material = SubResource("ShaderMaterial_eai3t")
-position = Vector2(960, 540)
+position = Vector2(320, 180)
+scale = Vector2(0.333333, 0.333333)
 texture = ExtResource("5_14hjd")
 
 [node name="Shopkeeper" type="Sprite2D" parent="."]
-position = Vector2(206, 764)
-scale = Vector2(12.975, 12.975)
+position = Vector2(323, 247)
+scale = Vector2(-4.487, 4.487)
 texture = ExtResource("6_wq4w0")
 
 [node name="ItemList" type="Node" parent="."]

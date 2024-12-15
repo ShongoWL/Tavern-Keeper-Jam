@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmv26jdes56uq"]
+
+[ext_resource type="Texture2D" uid="uid://tifrn30sr18l" path="res://Art/shopBox.png" id="1_50ffh"]
+[ext_resource type="Script" path="res://Scripts/itemPanel.gd" id="2_0cm4p"]
+
+[node name="Panel" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 0
+texture = ExtResource("1_50ffh")
+expand_mode = 1
+script = ExtResource("2_0cm4p")
+
+[node name="ItemSprite" type="TextureRect" parent="."]
+z_index = 1
+clip_contents = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ItemSprite"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -23.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "test"
+horizontal_alignment = 1

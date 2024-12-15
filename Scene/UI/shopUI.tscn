@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd8dqs5xe57fw"]
 
-[ext_resource type="PackedScene" uid="uid://bmv26jdes56uq" path="res://Scene/UI/shopPanel.tscn" id="1_lj2dt"]
+[ext_resource type="PackedScene" uid="uid://bmv26jdes56uq" path="res://Scene/UI/panel.tscn" id="1_lj2dt"]
 [ext_resource type="Script" path="res://Scripts/shopUi.gd" id="1_r4axm"]
 
 [node name="ShopUI" type="Control"]
@@ -10,6 +10,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
 script = ExtResource("1_r4axm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -19,11 +22,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 320
-theme_override_constants/margin_top = 256
+theme_override_constants/margin_left = 40
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(768, 768)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -32,28 +33,37 @@ theme_override_constants/v_separation = 0
 columns = 3
 
 [node name="ShopPanel" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel2" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel3" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel4" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel5" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel6" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel7" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel8" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="ShopPanel9" parent="MarginContainer/GridContainer" instance=ExtResource("1_lj2dt")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2

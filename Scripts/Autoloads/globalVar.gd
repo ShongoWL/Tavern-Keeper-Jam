@@ -5,6 +5,8 @@ var minTickRate: float = 0.1
 var playerGold: int
 var rent: int
 
+var inventory: Array[Item] = []
+
 var existingHeros: Array[Hero] = []
 
 #This is an enum of constants for the various states of time, trying to come up with a better name than "PARTY" for when the heros arrive
