@@ -1,10 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://omc7ani5wfa5"]
+[gd_scene load_steps=15 format=3 uid="uid://omc7ani5wfa5"]
 
 [ext_resource type="Script" path="res://Scripts/BattleManager.gd" id="1_ceb1t"]
 [ext_resource type="PackedScene" uid="uid://c55pg0nyqba0j" path="res://Scene/heroScene.tscn" id="1_vq15d"]
 [ext_resource type="PackedScene" uid="uid://c5nxxn8t3lgyf" path="res://Scene/time_manager.tscn" id="3_dsu4q"]
 [ext_resource type="Resource" uid="uid://c5n6dr08pegpd" path="res://Resources/Heroes/Barbarian.tres" id="3_sjcbm"]
+[ext_resource type="Resource" uid="uid://dgxa3dcue43ad" path="res://Resources/Abilities/bulkUp.tres" id="3_vp37a"]
+[ext_resource type="Resource" uid="uid://66sba7jooha6" path="res://Resources/Passives/painEnergyGain.tres" id="4_wik71"]
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="5_w8k64"]
+[ext_resource type="Script" path="res://Scripts/Entity.gd" id="9_pi4kg"]
+
+[sub_resource type="Resource" id="Resource_21l56"]
+resource_local_to_scene = true
+script = ExtResource("5_w8k64")
+critChance = 0
+energyRegen = 5
+energyLevel = 0.0
+critModifier = 2
+ability = ExtResource("3_vp37a")
+passive = ExtResource("4_wik71")
+maxHp = 50
+damage = 5
+attackCooldown = 2.0
+charName = "Default Hero"
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_we2rl"]
+resource_local_to_scene = true
+script = ExtResource("9_pi4kg")
+maxHp = 50
+damage = 5
+attackCooldown = 4.0
+charName = "Default Enemy"
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_1pni8"]
+resource_local_to_scene = true
+script = ExtResource("9_pi4kg")
+maxHp = 50
+damage = 5
+attackCooldown = 4.0
+charName = "Default Enemy"
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_edhf3"]
+resource_local_to_scene = true
+script = ExtResource("9_pi4kg")
+maxHp = 50
+damage = 5
+attackCooldown = 4.0
+charName = "Default Enemy"
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_c81l3"]
+resource_local_to_scene = true
+script = ExtResource("9_pi4kg")
+maxHp = 50
+damage = 5
+attackCooldown = 4.0
+charName = "Default Enemy"
+preferredTarget = 0
 
 [node name="BattleManager" type="Node2D"]
 script = ExtResource("1_ceb1t")
@@ -14,6 +69,7 @@ unique_name_in_owner = true
 
 [node name="HeroScene" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(564, 509)
+heroData = SubResource("Resource_21l56")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene" instance=ExtResource("3_dsu4q")]
 
@@ -40,6 +96,7 @@ unique_name_in_owner = true
 
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
 position = Vector2(873, 568)
+enemyData = SubResource("Resource_we2rl")
 
 [node name="TimeManager" parent="EnemyGroup/Enemy" instance=ExtResource("3_dsu4q")]
 
@@ -47,15 +104,18 @@ position = Vector2(873, 568)
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
 position = Vector2(1032, 570)
+enemyData = SubResource("Resource_1pni8")
 
 [node name="TimeManager" parent="EnemyGroup/Enemy2" instance=ExtResource("3_dsu4q")]
 
 [node name="Enemy3" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
 position = Vector2(1207, 559)
+enemyData = SubResource("Resource_edhf3")
 
 [node name="TimeManager" parent="EnemyGroup/Enemy3" instance=ExtResource("3_dsu4q")]
 
 [node name="Enemy4" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
 position = Vector2(1358, 572)
+enemyData = SubResource("Resource_c81l3")
 
 [node name="TimeManager" parent="EnemyGroup/Enemy4" instance=ExtResource("3_dsu4q")]

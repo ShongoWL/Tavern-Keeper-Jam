@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmfy6ksh6vxyy"]
+
+[ext_resource type="PackedScene" uid="uid://dvtt1x8kixu1s" path="res://Scene/UI/userInterface.tscn" id="1_uw7tw"]
+[ext_resource type="PackedScene" uid="uid://nabkptkm2u1j" path="res://Scene/shopScene.tscn" id="2_6nr2f"]
+
+[node name="Main" type="Node"]
+
+[node name="UserInterface" parent="." instance=ExtResource("1_uw7tw")]
+
+[node name="Shop" parent="UserInterface" instance=ExtResource("2_6nr2f")]

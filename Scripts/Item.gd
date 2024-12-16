@@ -7,3 +7,5 @@ class_name Item
 @export_enum("Common", "Uncommon", "Rare", "Mythic") var Rarity: String
 
 @export var itemAbility: Script
+
+var holder: ItemPanel ##This allows us to set an items holder so we can access the holder
