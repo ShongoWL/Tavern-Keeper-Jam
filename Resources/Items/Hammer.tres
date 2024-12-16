@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_wsnkr")
-itemName = "Card"
+itemName = "Hammer"
 price = 2
 sprite = ExtResource("2_6dqf1")
 Rarity = "Common"

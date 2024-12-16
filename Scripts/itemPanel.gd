@@ -13,6 +13,7 @@ func _ready() -> void:
 	if itemHeld:
 		itemSprite.texture = itemHeld.sprite
 		itemSprite.visible = true
+		itemHeld.holder = self
 
 func _process(delta: float) -> void:
 	if dragItem == true:
@@ -20,17 +21,24 @@ func _process(delta: float) -> void:
 
 #add a little money tag for price
 
-func _get_drag_data(at_position: Vector2) -> Item:
+func _get_drag_data(at_position: Vector2) -> Item: ##A, I believe this code is right but for some
+	##reason in main the shopScene and the userInterface fight each other and depending on the way they're
+	##set up one or the other won't receive ANY inputs?????
+	
+	##A, I figured it out, weirdness with control nodes. Long story short, a node that was supposed
+	## to just be "node" was actually "control" and it was blocking inputs
 	var dragPre = TextureRect.new()
 	dragPre.texture = itemHeld.sprite
 	set_drag_preview(dragPre)
 	return itemHeld
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	if data is Item:	return true
+	if data is Item and itemHeld == null:	return true
 	else: return false
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
+	data.holder.removeItem()
+	
 	itemHeld = data
 	updateItem()
 
@@ -39,7 +47,13 @@ func updateItem():
 		itemSprite.texture = itemHeld.sprite
 		label.text = str(itemHeld.price)
 		itemSprite.visible = true
-		print(itemHeld.itemName)
+		itemHeld.holder = self
+		print(itemHeld.itemName + " is held by " + name)
+	else:	itemSprite.visible = false
+
+func removeItem() -> void:
+	itemHeld = null
+	updateItem()
 
 ## A, commented this out for now while I test control's native _drop methods
 """func _gui_input(event: InputEvent) -> void:
@@ -54,7 +68,7 @@ func updateItem():
 			tween.tween_property(itemSprite,"position",itemSpriteBasePos,0.3)
 			#itemSprite.position = itemSpriteBasePos
 			#add something about, if dragged over to inventory buy and put it in that slot"""
-
+			
 func mouse_hovering():
 	accept_event()
 	var timer = Timer.new()
