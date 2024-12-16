@@ -4,7 +4,7 @@ var user: HeroScene
 @export var energyGain: int
 
 func setup(hero: HeroScene):
-	#print("setting up hpLoss connection in passive")
+	print("setting up hpLoss connection in passive")
 	SignalBus.hpLoss.connect(onLifeLoss)
 	user = hero
 

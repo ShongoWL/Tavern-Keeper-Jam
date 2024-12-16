@@ -74,20 +74,15 @@ func gainEnergy():
 	energyLevel = snapped(energyLevel + amountGain, .1)
 	if heroData != null:
 		if energyLevel >= heroData.ability.abilityCost:
-			print(charName, " spent ", heroData.ability.abilityCost, " to use their ability: ", heroData.ability.abilityName)
-			heroData.ability.onEnergyMet(self)
-			energyLevel -= heroData.ability.abilityCost
-		#else:
-			#print(charName, " gained ", amountGain, " energy. Total: ", energyLevel)
+			useAbility()
 
 #change energy can be positive or negative
 func changeEnergy(amountChange: int):
 	if amountChange > 0:
 		energyLevel += amountChange
 		if energyLevel >= heroData.ability.abilityCost:
-			print(charName, " spent ", heroData.ability.abilityCost, " to use their ability: ", heroData.ability.abilityName)
-			heroData.ability.onEnergyMet(self)
-			energyLevel -= heroData.ability.abilityCost
+			useAbility() ##A, I made a function for heroes to use their ability cause the code
+			## was being repeated
 		else:
 			print(charName, " gained ", amountChange, " energy. Total: ", energyLevel)
 	else:
@@ -95,6 +90,12 @@ func changeEnergy(amountChange: int):
 			energyLevel = 0
 		else:
 			energyLevel -= amountChange
+
+func useAbility():
+	heroData.ability.onEnergyMet(self,get_tree().get_nodes_in_group("LiveEnemies"))
+	energyLevel -= heroData.ability.abilityCost
+	SignalBus.energySpent.emit(self,heroData.ability.abilityCost)
+	print(charName, " spent ", heroData.ability.abilityCost, " to use their ability: ", heroData.ability.abilityName)
 
 func combatOver(isVictory: bool):
 	self.process_mode = Node.PROCESS_MODE_DISABLED

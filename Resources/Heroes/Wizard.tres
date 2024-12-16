@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Hero" load_steps=4 format=3 uid="uid://c0tbl8ortntno"]
+
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_2eu4h"]
+[ext_resource type="Resource" uid="uid://dg13c5f3ov84x" path="res://Resources/Abilities/fireball.tres" id="1_lipmr"]
+[ext_resource type="Resource" uid="uid://xa0xvx2s8lpf" path="res://Resources/Passives/perfect.tres" id="2_33n5e"]
+
+[resource]
+script = ExtResource("1_2eu4h")
+critChance = 0
+energyRegen = 7
+critModifier = 2
+ability = ExtResource("1_lipmr")
+passive = ExtResource("2_33n5e")
+maxHp = 45
+damage = 4
+attackCooldown = 5.0
+charName = "Wizard"
+preferredTarget = 0

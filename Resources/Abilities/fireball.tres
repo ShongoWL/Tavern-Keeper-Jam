@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="fireball" load_steps=2 format=3 uid="uid://dg13c5f3ov84x"]
+
+[ext_resource type="Script" path="res://Scripts/AbilityScripts/fireball.gd" id="1_w7vfa"]
+
+[resource]
+script = ExtResource("1_w7vfa")
+abilityName = "Fireball"
+abilityCost = 150

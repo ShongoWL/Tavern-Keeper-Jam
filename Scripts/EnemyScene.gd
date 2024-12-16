@@ -26,6 +26,8 @@ func _ready() -> void:
 	charName = enemyData.charName
 	
 	healthBar.initializeValues()
+	
+	add_to_group("LiveEnemies")
 
 func _process(delta: float) -> void:
 	#print("the monster's health is now ", hp)
@@ -47,6 +49,7 @@ func takeDamage(attacker: HeroScene, damageTaken: int):
 		#Stop player's timers and remove from array
 		print("enemy has died, throwing death signal")
 		SignalBus.deathSignal.emit(self, attacker)
+		remove_from_group("LiveEnemies")
 		damageQueue.clear()
 		self.process_mode = Node.PROCESS_MODE_DISABLED
 	else:

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="perfect" load_steps=2 format=3 uid="uid://xa0xvx2s8lpf"]
+
+[ext_resource type="Script" path="res://Scripts/PassiveScripts/perfect.gd" id="1_acro8"]
+
+[resource]
+script = ExtResource("1_acro8")
+energyGainedPer5Spent = 2
+passiveName = ""
+passiveDescription = ""

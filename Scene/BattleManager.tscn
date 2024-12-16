@@ -1,29 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://omc7ani5wfa5"]
+[gd_scene load_steps=12 format=3 uid="uid://omc7ani5wfa5"]
 
 [ext_resource type="Script" path="res://Scripts/BattleManager.gd" id="1_ceb1t"]
 [ext_resource type="PackedScene" uid="uid://c55pg0nyqba0j" path="res://Scene/heroScene.tscn" id="1_vq15d"]
 [ext_resource type="PackedScene" uid="uid://c5nxxn8t3lgyf" path="res://Scene/time_manager.tscn" id="3_dsu4q"]
 [ext_resource type="Resource" uid="uid://c5n6dr08pegpd" path="res://Resources/Heroes/Barbarian.tres" id="3_sjcbm"]
-[ext_resource type="Resource" uid="uid://dgxa3dcue43ad" path="res://Resources/Abilities/bulkUp.tres" id="3_vp37a"]
-[ext_resource type="Resource" uid="uid://66sba7jooha6" path="res://Resources/Passives/painEnergyGain.tres" id="4_wik71"]
+[ext_resource type="Resource" uid="uid://c0tbl8ortntno" path="res://Resources/Heroes/Wizard.tres" id="5_h1xbq"]
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
-[ext_resource type="Script" path="res://Scripts/Hero.gd" id="5_w8k64"]
 [ext_resource type="Script" path="res://Scripts/Entity.gd" id="9_pi4kg"]
-
-[sub_resource type="Resource" id="Resource_21l56"]
-resource_local_to_scene = true
-script = ExtResource("5_w8k64")
-critChance = 0
-energyRegen = 5
-energyLevel = 0.0
-critModifier = 2
-ability = ExtResource("3_vp37a")
-passive = ExtResource("4_wik71")
-maxHp = 50
-damage = 5
-attackCooldown = 2.0
-charName = "Default Hero"
-preferredTarget = 0
 
 [sub_resource type="Resource" id="Resource_we2rl"]
 resource_local_to_scene = true
@@ -69,7 +52,7 @@ unique_name_in_owner = true
 
 [node name="HeroScene" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(564, 509)
-heroData = SubResource("Resource_21l56")
+heroData = ExtResource("3_sjcbm")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene" instance=ExtResource("3_dsu4q")]
 
@@ -81,13 +64,13 @@ heroData = ExtResource("3_sjcbm")
 
 [node name="HeroScene3" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(252, 507)
-heroData = ExtResource("3_sjcbm")
+heroData = ExtResource("5_h1xbq")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene3" instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene4" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(98, 506)
-heroData = ExtResource("3_sjcbm")
+heroData = ExtResource("5_h1xbq")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene4" instance=ExtResource("3_dsu4q")]
 

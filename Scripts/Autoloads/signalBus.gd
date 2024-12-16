@@ -2,6 +2,7 @@ extends Node
 
 #Basic signals for gaining energy and triggering an entity's attack
 signal gainEnergy(who)
+signal energySpent(who, amount: int)
 signal timeToAttack(who)
 signal sendAttack(attacker,)
 

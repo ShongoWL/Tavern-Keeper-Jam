@@ -10,7 +10,7 @@ func _ready():
 	pass
 
 #Bulk up will increas attack power and crit chance of it's user
-func onEnergyMet(user: HeroScene):
+func onEnergyMet(user: HeroScene, _enemyArray: Array):
 	user.damage += damageBoost
 	user.critChance += critChanceBoost
 	print(user.charName, "'s damage increased by ", damageBoost)

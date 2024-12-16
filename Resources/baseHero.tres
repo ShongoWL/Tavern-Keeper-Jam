@@ -9,7 +9,6 @@ resource_local_to_scene = true
 script = ExtResource("1_gjpee")
 critChance = 0
 energyRegen = 5
-energyLevel = 0.0
 critModifier = 2
 ability = ExtResource("1_bm5bo")
 passive = ExtResource("2_3l6qn")

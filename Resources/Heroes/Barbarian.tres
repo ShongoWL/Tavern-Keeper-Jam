@@ -8,7 +8,6 @@
 script = ExtResource("1_pl4hs")
 critChance = 5
 energyRegen = 1
-energyLevel = 0.0
 critModifier = 2
 ability = ExtResource("1_85iqi")
 passive = ExtResource("2_yyws8")
