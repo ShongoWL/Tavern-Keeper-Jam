@@ -6,9 +6,10 @@
 [ext_resource type="Resource" uid="uid://c5n6dr08pegpd" path="res://Resources/Heroes/Barbarian.tres" id="3_sjcbm"]
 [ext_resource type="Resource" uid="uid://c0tbl8ortntno" path="res://Resources/Heroes/Wizard.tres" id="5_h1xbq"]
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
+[ext_resource type="Resource" uid="uid://hicjiloyfyqe" path="res://Resources/Enemies/Goblin.tres" id="7_yoou8"]
 [ext_resource type="Script" path="res://Scripts/Entity.gd" id="9_pi4kg"]
 
-[sub_resource type="Resource" id="Resource_we2rl"]
+[sub_resource type="Resource" id="Resource_tjkqk"]
 resource_local_to_scene = true
 script = ExtResource("9_pi4kg")
 maxHp = 50
@@ -17,7 +18,7 @@ attackCooldown = 4.0
 charName = "Default Enemy"
 preferredTarget = 0
 
-[sub_resource type="Resource" id="Resource_1pni8"]
+[sub_resource type="Resource" id="Resource_t8grp"]
 resource_local_to_scene = true
 script = ExtResource("9_pi4kg")
 maxHp = 50
@@ -26,16 +27,7 @@ attackCooldown = 4.0
 charName = "Default Enemy"
 preferredTarget = 0
 
-[sub_resource type="Resource" id="Resource_edhf3"]
-resource_local_to_scene = true
-script = ExtResource("9_pi4kg")
-maxHp = 50
-damage = 5
-attackCooldown = 4.0
-charName = "Default Enemy"
-preferredTarget = 0
-
-[sub_resource type="Resource" id="Resource_c81l3"]
+[sub_resource type="Resource" id="Resource_6c86a"]
 resource_local_to_scene = true
 script = ExtResource("9_pi4kg")
 maxHp = 50
@@ -51,54 +43,52 @@ script = ExtResource("1_ceb1t")
 unique_name_in_owner = true
 
 [node name="HeroScene" parent="HeroGroup" instance=ExtResource("1_vq15d")]
-position = Vector2(564, 509)
+position = Vector2(50, 260)
 heroData = ExtResource("3_sjcbm")
 
-[node name="TimeManager" parent="HeroGroup/HeroScene" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene2" parent="HeroGroup" instance=ExtResource("1_vq15d")]
-position = Vector2(408, 508)
+position = Vector2(140, 260)
 heroData = ExtResource("3_sjcbm")
 
-[node name="TimeManager" parent="HeroGroup/HeroScene2" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene2" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene3" parent="HeroGroup" instance=ExtResource("1_vq15d")]
-position = Vector2(252, 507)
+position = Vector2(230, 260)
 heroData = ExtResource("5_h1xbq")
 
-[node name="TimeManager" parent="HeroGroup/HeroScene3" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene3" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene4" parent="HeroGroup" instance=ExtResource("1_vq15d")]
-position = Vector2(98, 506)
+position = Vector2(320, 260)
 heroData = ExtResource("5_h1xbq")
 
-[node name="TimeManager" parent="HeroGroup/HeroScene4" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="HeroGroup/HeroScene4" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="EnemyGroup" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
-position = Vector2(873, 568)
-enemyData = SubResource("Resource_we2rl")
+position = Vector2(400, 271)
+enemyData = ExtResource("7_yoou8")
 
-[node name="TimeManager" parent="EnemyGroup/Enemy" instance=ExtResource("3_dsu4q")]
-
-[node name="Node" type="Node" parent="EnemyGroup/Enemy"]
+[node name="TimeManager" parent="EnemyGroup/Enemy" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
-position = Vector2(1032, 570)
-enemyData = SubResource("Resource_1pni8")
+position = Vector2(464, 271)
+enemyData = SubResource("Resource_tjkqk")
 
-[node name="TimeManager" parent="EnemyGroup/Enemy2" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="EnemyGroup/Enemy2" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="Enemy3" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
-position = Vector2(1207, 559)
-enemyData = SubResource("Resource_edhf3")
+position = Vector2(528, 271)
+enemyData = SubResource("Resource_t8grp")
 
-[node name="TimeManager" parent="EnemyGroup/Enemy3" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="EnemyGroup/Enemy3" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="Enemy4" parent="EnemyGroup" instance=ExtResource("5_kdsbv")]
-position = Vector2(1358, 572)
-enemyData = SubResource("Resource_c81l3")
+position = Vector2(400, 80)
+enemyData = SubResource("Resource_6c86a")
 
-[node name="TimeManager" parent="EnemyGroup/Enemy4" instance=ExtResource("3_dsu4q")]
+[node name="TimeManager" parent="EnemyGroup/Enemy4" groups=["Timers"] instance=ExtResource("3_dsu4q")]

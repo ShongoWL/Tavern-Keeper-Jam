@@ -21,7 +21,7 @@ func _ready() -> void:
 	maxHp = enemyData.maxHp
 	hp = maxHp
 	damage = enemyData.damage
-	attackCooldown = enemyData.damage
+	attackCooldown = enemyData.attackCooldown
 	preferredTarget = enemyData.preferredTarget
 	charName = enemyData.charName
 	

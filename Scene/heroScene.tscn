@@ -1,26 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://c55pg0nyqba0j"]
+[gd_scene load_steps=6 format=3 uid="uid://c55pg0nyqba0j"]
 
 [ext_resource type="Script" path="res://Scripts/heroScene.gd" id="1_2kcso"]
 [ext_resource type="Resource" uid="uid://tssetm4wqidn" path="res://Resources/baseHero.tres" id="2_b3xl4"]
 [ext_resource type="Texture2D" uid="uid://cvhh0f200cl0f" path="res://Art/dude.svg" id="2_og1u5"]
-[ext_resource type="PackedScene" uid="uid://u5ora2halxie" path="res://Scene/healthbar.tscn" id="4_67fsq"]
+[ext_resource type="PackedScene" uid="uid://u5ora2halxie" path="res://Scene/UI/healthbar.tscn" id="4_67fsq"]
+[ext_resource type="PackedScene" uid="uid://cdx2thehmwp8p" path="res://Scene/UI/energybar.tscn" id="4_cww61"]
 
 [node name="HeroScene" type="Node2D"]
-position = Vector2(267, 499)
 script = ExtResource("1_2kcso")
 heroData = ExtResource("2_b3xl4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 18)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_og1u5")
 
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_left = -214.0
 offset_top = -437.0
 offset_right = -119.0
 offset_bottom = -406.0
 text = "test button"
 
+[node name="EnergyBar" parent="." node_paths=PackedStringArray("parental") instance=ExtResource("4_cww61")]
+offset_left = -48.0
+offset_top = -112.0
+offset_right = 40.0
+offset_bottom = -90.0
+parental = NodePath("..")
+
 [node name="Healthbar" parent="." node_paths=PackedStringArray("parental") instance=ExtResource("4_67fsq")]
+offset_left = -48.0
+offset_top = -88.0
+offset_right = 40.0
+offset_bottom = -66.0
 parental = NodePath("..")
 
 [connection signal="pressed" from="Button" to="." method="takedamage"]

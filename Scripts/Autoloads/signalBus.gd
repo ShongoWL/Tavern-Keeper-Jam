@@ -4,7 +4,7 @@ extends Node
 signal gainEnergy(who)
 signal energySpent(who, amount: int)
 signal timeToAttack(who)
-signal sendAttack(attacker,)
+signal sendAttack(attacker)
 
 #Signals to update amount of energy gained per second or to change the amount of time it takes to attack
 signal updateEnergyGain(who: Entity, amount: float)

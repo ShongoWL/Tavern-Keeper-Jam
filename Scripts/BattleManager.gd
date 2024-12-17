@@ -8,6 +8,8 @@ class_name BattleManager extends Node2D
 ## vars so we don't need to export them by hand. Now in the ready function
 ## battlemanager accesses the HeroGroup & EnemyGroup nodes to fill the arrays
 
+var timerArray:Array[Node] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.timeToAttack.connect(callAttacker)
@@ -21,6 +23,12 @@ func _ready() -> void:
 	for i in enemyGroup.get_children():
 		if i is EnemyScene:
 			enemyArray.append(i)
+	
+	await get_tree().create_timer(0.2).timeout
+	timerArray = get_tree().get_nodes_in_group("Timers")
+	for i in timerArray:
+		i.startFight()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

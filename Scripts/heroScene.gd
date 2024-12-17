@@ -5,6 +5,7 @@ class_name HeroScene
 
 #References to children
 @onready var healthBar: ProgressBar = $Healthbar
+@onready var energyBar: ProgressBar = $EnergyBar
 
 var hp:int : set = updateHealthbar #this set line makes it so that whenever hp
 # is changed updateHealthbar is ran
@@ -15,6 +16,8 @@ var critChance:int
 var energyLevel:float
 var energyRegen:int
 var charName:String
+
+var abilityCost
 
 var maxHp: int
 
@@ -33,14 +36,16 @@ func _ready() -> void:
 	charName = heroData.charName
 	energyLevel = 0
 	energyRegen = heroData.energyRegen
+	abilityCost = heroData.ability.abilityCost
 	
 	#Run this at the end of ready to make sure healthBar has access to the right values
 	healthBar.initializeValues()
+	energyBar.initializeValues()
 	if heroData.passive:
 		heroData.passive.setup(self)
+	
 
 func _process(delta: float) -> void:
-	#print("the monster's health is now ", hp)
 	var tempSize = damageQueue.size()
 	for action in damageQueue:
 		action.call()
@@ -72,6 +77,7 @@ func takeDamage(attacker: EnemyScene, damageTaken: int):
 func gainEnergy():
 	var amountGain = (energyRegen * GlobalVar.minTickRate)
 	energyLevel = snapped(energyLevel + amountGain, .1)
+	energyBar.update(energyLevel)
 	if heroData != null:
 		if energyLevel >= heroData.ability.abilityCost:
 			useAbility()
@@ -90,10 +96,13 @@ func changeEnergy(amountChange: int):
 			energyLevel = 0
 		else:
 			energyLevel -= amountChange
+	
+	energyBar.update(energyLevel)
 
 func useAbility():
 	heroData.ability.onEnergyMet(self,get_tree().get_nodes_in_group("LiveEnemies"))
 	energyLevel -= heroData.ability.abilityCost
+	energyBar.update(energyLevel)
 	SignalBus.energySpent.emit(self,heroData.ability.abilityCost)
 	print(charName, " spent ", heroData.ability.abilityCost, " to use their ability: ", heroData.ability.abilityName)
 

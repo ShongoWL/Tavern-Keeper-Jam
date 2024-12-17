@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_e23st")
-energyGain = 7
-passiveName = ""
-passiveDescription = ""
+energyGain = 10
+passiveName = "Pressure"
+passiveDescription = "Pressure: Whenever you lose HP, gain 10 energy."

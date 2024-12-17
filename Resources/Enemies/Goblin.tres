@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://hicjiloyfyqe"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_sepbm"]
+
+[resource]
+script = ExtResource("1_sepbm")
+maxHp = 50
+damage = 5
+attackCooldown = 5.0
+charName = "Goblin"
+preferredTarget = 0

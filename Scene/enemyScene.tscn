@@ -60,13 +60,14 @@ script = ExtResource("1_hba68")
 enemyData = ExtResource("2_6hlaq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-22, -51)
 scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_ubx0a")
 autoplay = "default"
 frame_progress = 0.29513
 
 [node name="Healthbar" parent="." node_paths=PackedStringArray("parental") instance=ExtResource("4_hp0el")]
-offset_top = -126.0
-offset_bottom = -99.0
+offset_left = -10.0
+offset_top = -72.0
+offset_right = 78.0
+offset_bottom = -45.0
 parental = NodePath("..")
