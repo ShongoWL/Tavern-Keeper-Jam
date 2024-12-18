@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://66sba7jooha6" path="res://Resources/Passives/painEnergyGain.tres" id="2_yyws8"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_pl4hs")
 critChance = 5
 energyRegen = 1

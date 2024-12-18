@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/PassiveScripts/painEnergyGain.gd" id="1_e23st"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_e23st")
 energyGain = 10
 passiveName = "Pressure"

@@ -41,6 +41,8 @@ func _ready() -> void:
 	#Run this at the end of ready to make sure healthBar has access to the right values
 	healthBar.initializeValues()
 	energyBar.initializeValues()
+	if heroData:
+		heroData.setup(self)
 	if heroData.passive:
 		heroData.passive.setup(self)
 	

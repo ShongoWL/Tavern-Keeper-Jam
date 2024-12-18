@@ -9,4 +9,9 @@ class_name Hero
 
 @export var passive: Passive
 
+var user: HeroScene
+
 var energyLevel: float
+
+func setup(user: HeroScene) -> void:
+	user = user
