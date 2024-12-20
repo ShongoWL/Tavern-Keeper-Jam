@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvtt1x8kixu1s"]
 
 [ext_resource type="Texture2D" uid="uid://b5qpp5jba35v7" path="res://Art/bearded-idle-4.png" id="1_4linj"]
-[ext_resource type="PackedScene" uid="uid://bmv26jdes56uq" path="res://Scene/UI/panel.tscn" id="2_bfhn2"]
-[ext_resource type="Script" path="res://Scripts/invPanel.gd" id="3_n6t8a"]
+[ext_resource type="PackedScene" uid="uid://do1rc26jms5fp" path="res://Scene/itemListScene.tscn" id="2_afvmk"]
+[ext_resource type="Script" path="res://Scripts/invList.gd" id="3_n6t8a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8th0k"]
 
@@ -28,95 +28,16 @@ texture = ExtResource("1_4linj")
 region_enabled = true
 region_rect = Rect2(11.2708, 3.92828, 16.0259, 13.4894)
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="ItemList" parent="." instance=ExtResource("2_afvmk")]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -160.0
-offset_right = 160.0
-offset_bottom = 64.0
+anchors_preset = -1
+anchor_left = 0.219
+anchor_right = 0.719
+anchor_bottom = 0.267
+offset_left = -0.160004
+offset_right = -0.160034
+offset_bottom = -0.12001
 grow_horizontal = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 10
-
-[node name="Panel" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
+item_count = 0
 script = ExtResource("3_n6t8a")
-
-[node name="Panel2" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel3" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel4" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel5" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel6" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel7" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel8" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel9" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel10" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel11" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel12" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel13" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel14" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel15" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel16" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel17" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel18" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel19" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
-
-[node name="Panel20" parent="GridContainer" instance=ExtResource("2_bfhn2")]
-layout_mode = 2
-script = ExtResource("3_n6t8a")
+metadata/_edit_use_anchors_ = true

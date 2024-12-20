@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmfy6ksh6vxyy"]
 
 [ext_resource type="PackedScene" uid="uid://dvtt1x8kixu1s" path="res://Scene/UI/userInterface.tscn" id="1_uw7tw"]
-[ext_resource type="PackedScene" uid="uid://nabkptkm2u1j" path="res://Scene/shopScene.tscn" id="2_6nr2f"]
+[ext_resource type="PackedScene" uid="uid://bk7uxw1ljabfb" path="res://Scene/UI/backDrops.tscn" id="2_6ma0q"]
 
 [node name="Main" type="Node"]
 
 [node name="UserInterface" parent="." instance=ExtResource("1_uw7tw")]
+z_index = 5
 
-[node name="Shop" parent="." instance=ExtResource("2_6nr2f")]
+[node name="BackDrops" parent="." instance=ExtResource("2_6ma0q")]

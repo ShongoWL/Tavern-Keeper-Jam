@@ -1,8 +1,8 @@
-extends Node
+extends TimeOfDay
 class_name ShopScene
 
 @onready var shopUI: Control = $ShopUI
-@onready var itemList: itemList = $ItemList
+@onready var itemDir: ItemDir = $ItemDir
 
 @export var testItem: Item
 
@@ -12,5 +12,5 @@ func _ready() -> void:
 
 
 func generate_items():
-	for bag in itemList.itemArray:
+	for bag in itemDir.itemArray:
 		shopUI.add_item(bag)

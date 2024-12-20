@@ -1,13 +1,100 @@
-[gd_scene load_steps=12 format=3 uid="uid://omc7ani5wfa5"]
+[gd_scene load_steps=23 format=3 uid="uid://omc7ani5wfa5"]
 
 [ext_resource type="Script" path="res://Scripts/BattleManager.gd" id="1_ceb1t"]
 [ext_resource type="PackedScene" uid="uid://c55pg0nyqba0j" path="res://Scene/heroScene.tscn" id="1_vq15d"]
 [ext_resource type="PackedScene" uid="uid://c5nxxn8t3lgyf" path="res://Scene/time_manager.tscn" id="3_dsu4q"]
-[ext_resource type="Resource" uid="uid://c5n6dr08pegpd" path="res://Resources/Heroes/Barbarian.tres" id="3_sjcbm"]
-[ext_resource type="Resource" uid="uid://c0tbl8ortntno" path="res://Resources/Heroes/Wizard.tres" id="5_h1xbq"]
+[ext_resource type="Resource" uid="uid://dgxa3dcue43ad" path="res://Resources/Abilities/bulkUp.tres" id="3_gq00k"]
+[ext_resource type="Script" path="res://Scripts/PassiveScripts/painEnergyGain.gd" id="4_qh080"]
 [ext_resource type="PackedScene" uid="uid://dqu3esdd6qywr" path="res://Scene/enemyScene.tscn" id="5_kdsbv"]
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="5_ti5m8"]
+[ext_resource type="Resource" uid="uid://dg13c5f3ov84x" path="res://Resources/Abilities/fireball.tres" id="7_qd8ie"]
 [ext_resource type="Resource" uid="uid://hicjiloyfyqe" path="res://Resources/Enemies/Goblin.tres" id="7_yoou8"]
+[ext_resource type="Script" path="res://Scripts/PassiveScripts/perfect.gd" id="8_8wxmm"]
 [ext_resource type="Script" path="res://Scripts/Entity.gd" id="9_pi4kg"]
+
+[sub_resource type="Resource" id="Resource_hsbk2"]
+resource_local_to_scene = true
+script = ExtResource("4_qh080")
+energyGain = 10
+passiveName = "Pressure"
+passiveDescription = "Pressure: Whenever you lose HP, gain 10 energy."
+
+[sub_resource type="Resource" id="Resource_41f6u"]
+resource_local_to_scene = true
+script = ExtResource("5_ti5m8")
+critChance = 5
+energyRegen = 1
+critModifier = 2
+ability = ExtResource("3_gq00k")
+passive = SubResource("Resource_hsbk2")
+maxHp = 70
+damage = 5
+attackCooldown = 4.0
+charName = "Barbarian"
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_0l26t"]
+resource_local_to_scene = true
+script = ExtResource("4_qh080")
+energyGain = 10
+passiveName = "Pressure"
+passiveDescription = "Pressure: Whenever you lose HP, gain 10 energy."
+
+[sub_resource type="Resource" id="Resource_c1boc"]
+resource_local_to_scene = true
+script = ExtResource("5_ti5m8")
+critChance = 5
+energyRegen = 1
+critModifier = 2
+ability = ExtResource("3_gq00k")
+passive = SubResource("Resource_0l26t")
+maxHp = 70
+damage = 5
+attackCooldown = 4.0
+charName = "Barbarian"
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_6cys1"]
+resource_local_to_scene = true
+script = ExtResource("8_8wxmm")
+energyGainedPer5Spent = 2
+passiveName = ""
+passiveDescription = ""
+
+[sub_resource type="Resource" id="Resource_wxt0x"]
+resource_local_to_scene = true
+script = ExtResource("5_ti5m8")
+critChance = 0
+energyRegen = 7
+critModifier = 2
+ability = ExtResource("7_qd8ie")
+passive = SubResource("Resource_6cys1")
+maxHp = 45
+damage = 4
+attackCooldown = 5.0
+charName = "Wizard"
+preferredTarget = 0
+
+[sub_resource type="Resource" id="Resource_rue5l"]
+resource_local_to_scene = true
+script = ExtResource("8_8wxmm")
+energyGainedPer5Spent = 2
+passiveName = ""
+passiveDescription = ""
+
+[sub_resource type="Resource" id="Resource_ft8ac"]
+resource_local_to_scene = true
+script = ExtResource("5_ti5m8")
+critChance = 0
+energyRegen = 7
+critModifier = 2
+ability = ExtResource("7_qd8ie")
+passive = SubResource("Resource_rue5l")
+maxHp = 45
+damage = 4
+attackCooldown = 5.0
+charName = "Wizard"
+preferredTarget = 0
 
 [sub_resource type="Resource" id="Resource_tjkqk"]
 resource_local_to_scene = true
@@ -44,25 +131,25 @@ unique_name_in_owner = true
 
 [node name="HeroScene" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(320, 260)
-heroData = ExtResource("3_sjcbm")
+heroData = SubResource("Resource_41f6u")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene2" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(229, 260)
-heroData = ExtResource("3_sjcbm")
+heroData = SubResource("Resource_c1boc")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene2" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene3" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(140, 260)
-heroData = ExtResource("5_h1xbq")
+heroData = SubResource("Resource_wxt0x")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene3" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 
 [node name="HeroScene4" parent="HeroGroup" instance=ExtResource("1_vq15d")]
 position = Vector2(49, 260)
-heroData = ExtResource("5_h1xbq")
+heroData = SubResource("Resource_ft8ac")
 
 [node name="TimeManager" parent="HeroGroup/HeroScene4" groups=["Timers"] instance=ExtResource("3_dsu4q")]
 

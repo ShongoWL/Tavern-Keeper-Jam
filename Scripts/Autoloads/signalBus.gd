@@ -20,5 +20,8 @@ signal hpLoss(who: Entity, amount: int)
 #Signals related to combat victory/defeat
 signal combatOver(battle: BattleManager, isVictory: bool)
 
+#Time of Day Signals
+signal newTimeOfDay(what: TimeOfDay)
+
 #Shop related signals
 signal itemBought(item: Item, price: int)

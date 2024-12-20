@@ -1,36 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk7uxw1ljabfb"]
+[gd_scene load_steps=4 format=3 uid="uid://bk7uxw1ljabfb"]
 
 [ext_resource type="Script" path="res://Scripts/backDrops.gd" id="1_jg3cn"]
-[ext_resource type="Texture2D" uid="uid://beq25k5f7uxm7" path="res://Art/morningState.png" id="2_5x40h"]
-[ext_resource type="Shader" path="res://Art/Shaders/dithering.gdshader" id="3_idqaf"]
-[ext_resource type="Texture2D" uid="uid://bog6k0hbvmil3" path="res://Art/Palettes/slso8-32x.png" id="4_8w4dm"]
-[ext_resource type="Texture2D" uid="uid://d548q26oxypp" path="res://Art/Shaders/bayer16tile2.png" id="5_e1r5b"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2k0b"]
-shader = ExtResource("3_idqaf")
-shader_parameter/u_bit_depth = 7
-shader_parameter/u_contrast = 1.0
-shader_parameter/u_offset = 0.0
-shader_parameter/u_dither_size = 6
-shader_parameter/u_dither_tex = ExtResource("5_e1r5b")
-shader_parameter/u_color_tex = ExtResource("4_8w4dm")
+[ext_resource type="PackedScene" uid="uid://nabkptkm2u1j" path="res://Scene/Times/shopScene.tscn" id="2_4bch1"]
+[ext_resource type="PackedScene" uid="uid://4bxr83lwdvxf" path="res://Scene/Times/morning.tscn" id="4_cojli"]
 
 [node name="BackDrops" type="Node2D"]
 script = ExtResource("1_jg3cn")
 
-[node name="TextureRect" type="Sprite2D" parent="."]
-position = Vector2(958.222, 540)
-texture = ExtResource("2_5x40h")
+[node name="Scene1Parent" type="Node2D" parent="."]
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="TextureRect"]
+[node name="Morning" parent="Scene1Parent" instance=ExtResource("4_cojli")]
 
-[node name="TextureRect2" type="Sprite2D" parent="."]
-z_index = 1
-material = SubResource("ShaderMaterial_b2k0b")
-position = Vector2(2918, 532.85)
-texture = ExtResource("2_5x40h")
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Scene1Parent"]
+z_index = 2
+position = Vector2(320, 166)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="TextureRect2"]
+[node name="Scene2Parent" type="Node2D" parent="."]
+position = Vector2(640, 0)
+
+[node name="Shop" parent="Scene2Parent" instance=ExtResource("2_4bch1")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Scene2Parent"]
+z_index = 2
+position = Vector2(324.428, 176)
 
 [node name="Button" type="Button" parent="."]
 z_index = 3

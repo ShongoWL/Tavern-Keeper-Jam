@@ -1,9 +1,12 @@
 extends Node2D
 
-@onready var textureRect: Sprite2D = $TextureRect
-@onready var textureRect2: Sprite2D = $TextureRect2
-@onready var textureRectOnScreen: VisibleOnScreenNotifier2D = $TextureRect/VisibleOnScreenNotifier2D
-@onready var textureRectOnScreen2: VisibleOnScreenNotifier2D = $TextureRect2/VisibleOnScreenNotifier2D
+@onready var scene1Parent: Node2D = $Scene1Parent
+@onready var scene2Parent: Node2D = $Scene2Parent
+@onready var scene1OnScreen: VisibleOnScreenNotifier2D = $Scene1Parent/VisibleOnScreenNotifier2D
+@onready var scene2OnScreen: VisibleOnScreenNotifier2D = $Scene2Parent/VisibleOnScreenNotifier2D
+
+@onready var time1: TimeOfDay = $Scene1Parent/Morning
+@onready var time2: TimeOfDay = $Scene2Parent/Shop
 
 @onready var timer: Timer = $Timer
 
@@ -15,41 +18,46 @@ var tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	textureRect.set_position(Vector2(viewportRect.size.x/2,viewportRect.size.y/2))
-	textureRect2.set_position(Vector2(viewportRect.size.x*1.5,viewportRect.size.y/2))
+	scene1Parent.set_position(Vector2(0,0))
+	scene2Parent.set_position(Vector2(viewportRect.size.x,0))
 
 func nextPhase() -> void:
 	print("button pressed")
-	match textureRectOnScreen.is_on_screen():
+	
+	moveScenes()
+	time1.startTime()
+	#SignalBus.newTimeOfDay.emit(thenewtime)  Add this in later
+
+
+func moveScenes() -> void:
+	match scene1OnScreen.is_on_screen():
 		true:
 			print("Im at 0")
 			tween = create_tween()
 			#This tween moves textureRect to a negative value equal to its size (-1920)
-			tween.tween_property(textureRect2, "position", Vector2(viewportRect.size.x/2, textureRect2.position.y),1)
-			tween.parallel().tween_property(textureRect, "position", Vector2(-viewportRect.size.x/2, textureRect.position.y),1)
+			tween.tween_property(scene2Parent, "position", Vector2(0, scene2Parent.position.y),1)
+			tween.parallel().tween_property(scene1Parent, "position", Vector2(-viewportRect.size.x, scene1Parent.position.y),1)
 			
-			timer.start()
 		false:
 			print("hi")
 			tween = create_tween()
 			#This tween moves textureRect2 to a negative value equal to its size (-1920)
-			tween.tween_property(textureRect, "position", Vector2(viewportRect.size.x/2, textureRect.position.y),1)
-			tween.parallel().tween_property(textureRect2, "position", Vector2(-viewportRect.size.x/2, textureRect.position.y),1)
-			
-			
-			timer.start()
+			tween.tween_property(scene1Parent, "position", Vector2(0, scene1Parent.position.y),1)
+			tween.parallel().tween_property(scene2Parent, "position", Vector2(-viewportRect.size.x, scene2Parent.position.y),1)
+	
+	timer.start()
 
 func moveRectToRightmostPos():
-	match textureRectOnScreen.is_on_screen():
+	match scene1OnScreen.is_on_screen():
 		true:
-			textureRect2.visible = false
-			textureRect2.position.x = viewportRect.size.x * 1.5
-			textureRect2.z_index = -1
-			textureRect.z_index = 1
-			textureRect2.visible = true
+			scene2Parent.visible = false
+			scene2Parent.position.x = viewportRect.size.x
+			scene2Parent.z_index = -1
+			scene1Parent.z_index = 1
+			scene2Parent.visible = true
 		false:
-			textureRect.visible = false
-			textureRect.position.x = viewportRect.size.x * 1.5
-			textureRect.z_index = -1
-			textureRect2.z_index = 1
-			textureRect.visible = true
+			scene1Parent.visible = false
+			scene1Parent.position.x = viewportRect.size.x
+			scene1Parent.z_index = -1
+			scene2Parent.z_index = 1
+			scene1Parent.visible = true

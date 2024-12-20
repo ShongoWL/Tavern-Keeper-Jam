@@ -1,5 +1,5 @@
 extends Node
-class_name itemList
+class_name ItemDir
 
 #If those node paths change we're fucked :D
 const TEST_ITEM_2 = preload("res://Resources/Items/Card.tres")

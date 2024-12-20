@@ -1,7 +1,7 @@
 extends Control
 class_name ItemPanel
 
-@onready var itemSprite: TextureRect = $ItemSprite
+"""@onready var itemSprite: TextureRect = $ItemSprite
 @onready var label: Label = $ItemSprite/Label
 
 var itemHeld: Item
@@ -13,7 +13,7 @@ func _ready() -> void:
 	if itemHeld:
 		itemSprite.texture = itemHeld.sprite
 		itemSprite.visible = true
-		itemHeld.holder = self
+		#itemHeld.holder = self
 
 func _process(delta: float) -> void:
 	if dragItem == true:
@@ -27,6 +27,9 @@ func _get_drag_data(at_position: Vector2) -> Item: ##A, I believe this code is r
 	
 	##A, I figured it out, weirdness with control nodes. Long story short, a node that was supposed
 	## to just be "node" was actually "control" and it was blocking inputs
+	
+	if !itemHeld:
+		return null
 	var dragPre = TextureRect.new()
 	dragPre.texture = itemHeld.sprite
 	set_drag_preview(dragPre)
@@ -56,7 +59,7 @@ func removeItem() -> void:
 	updateItem()
 
 ## A, commented this out for now while I test control's native _drop methods
-"""func _gui_input(event: InputEvent) -> void:
+func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 			accept_event()
@@ -67,7 +70,7 @@ func removeItem() -> void:
 			var tween = create_tween()
 			tween.tween_property(itemSprite,"position",itemSpriteBasePos,0.3)
 			#itemSprite.position = itemSpriteBasePos
-			#add something about, if dragged over to inventory buy and put it in that slot"""
+			#add something about, if dragged over to inventory buy and put it in that slot
 			
 func mouse_hovering():
 	accept_event()
@@ -78,3 +81,4 @@ func mouse_hovering():
 
 func showTooltip():
 	pass
+"""

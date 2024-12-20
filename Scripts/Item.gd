@@ -8,4 +8,5 @@ class_name Item
 
 @export var itemAbility: Script
 
-var holder: ItemPanel ##This allows us to set an items holder so we can access the holder
+var holder: ItemList ##This allows us to set an items holder so we can access the holder
+var index: int

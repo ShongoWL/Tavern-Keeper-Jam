@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://do1rc26jms5fp"]
+
+[ext_resource type="Texture2D" uid="uid://tifrn30sr18l" path="res://Art/shopBox.png" id="1_h2oxo"]
+[ext_resource type="Script" path="res://Scripts/itemListScript.gd" id="2_c58em"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kblhj"]
+texture = ExtResource("1_h2oxo")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="Theme" id="Theme_p3e1x"]
+ItemList/styles/panel = SubResource("StyleBoxTexture_kblhj")
+
+[node name="ItemList" type="ItemList"]
+theme = SubResource("Theme_p3e1x")
+theme_override_constants/v_separation = 0
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 8
+max_columns = 10
+same_column_width = true
+fixed_column_width = 32
+icon_mode = 0
+fixed_icon_size = Vector2i(32, 32)
+script = ExtResource("2_c58em")

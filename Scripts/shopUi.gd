@@ -1,18 +1,9 @@
 extends Control
 class_name ShopUI
 
-@onready var gridContainer: GridContainer = $MarginContainer/GridContainer
+@onready var itemList: ItemList = $MarginContainer/ItemList
 
-@onready var shopPanelArray: Array[Node] = gridContainer.get_children()
-
-func add_item(bag: Item) -> ItemPanel:
-	for hole in shopPanelArray:
-		if hole.itemHeld:
-			continue
-		else:
-			hole.itemHeld = bag
-			hole.updateItem()
-			print(hole.name + " has been bestowed " + bag.itemName)
-			return hole
+func add_item(bag: Item) -> void:
+	itemList.addItem(bag)
 	
-	return null
+	print(itemList.name + " has been bestowed " + bag.itemName)
